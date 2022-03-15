@@ -11,8 +11,12 @@ import {
     makeStyles,
     Typography,
     TextField,
+    createTheme,
+    responsiveFontSizes,
+    ThemeProvider,
 } from "@material-ui/core";
 import Topbar from "./Topbar";
+import AboutUs from "./AboutUs";
 import "./App.css";
 const sha512 = require("js-sha512").sha512;
 
@@ -28,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold",
     },
 }));
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 function App() {
     const classes = useStyles();
@@ -60,103 +67,120 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
-            <Topbar />
-            <Dialog
-                open={showModal}
-                BackdropProps={{ classes: { root: classes.backDrop } }}
-                onClose={() => {}}
-            >
-                <DialogContent style={{ textAlign: "center" }}>
-                    <Typography variant="h3" className="pass-modal">
-                        Welcome!
-                    </Typography>
-                    <Typography variant="h4" className="pass-modal">
-                        Please enter the password to continue:
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        className={classes.errorText}
-                        hidden={!showError}
-                    >
-                        The password is incorrect! Please try again.
-                    </Typography>
-                    <form onSubmit={checkPass}>
-                        <TextField
-                            id="password-field"
-                            variant="standard"
-                            placeholder="Password"
-                            className="pass-modal"
-                            value={pass}
-                            onChange={handleChange}
-                            type="password"
-                        />
-                        <Button type="submit" disabled={pass.length <= 0}>
-                            Enter!
-                        </Button>
-                    </form>
-                </DialogContent>
-            </Dialog>
-            <section
-                id="home"
-                className="home-page"
-                style={{
-                    backgroundImage: `url('${homePhoto}')`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                }}
-            >
-                <Box sx={{ width: "40%", margin: "auto" }}>
-                    <Card variant="outlined">
-                        <CardContent>
-                            <Typography variant="h3">
-                                A Brrap & A Brrap
-                            </Typography>
-                            <img
-                                src={divider}
-                                alt="Divider"
-                                style={{ width: "80%", padding: "15px" }}
-                            ></img>
-                            <Typography variant="h6">
-                                well meaning and kindly.
-                                <br />
-                                {'"a benevolent smile"'}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Box>
-            </section>
-            <footer className="footer">
-                <div className="footer-div">
-                    <span className="footer-left">
+        <ThemeProvider theme={theme}>
+            <div className="App">
+                <Topbar />
+                <Dialog
+                    open={showModal}
+                    BackdropProps={{ classes: { root: classes.backDrop } }}
+                    onClose={() => {}}
+                >
+                    <DialogContent style={{ textAlign: "center" }}>
+                        <Typography variant="h3" className="pass-modal">
+                            Welcome!
+                        </Typography>
+                        <Typography variant="h4" className="pass-modal">
+                            Please enter the password to continue:
+                        </Typography>
                         <Typography
                             variant="h6"
-                            style={{ paddingLeft: "15px" }}
+                            className={classes.errorText}
+                            hidden={!showError}
                         >
-                            Created by Timothy Wang
+                            The password is incorrect! Please try again.
                         </Typography>
-                    </span>
-                    <span className="footer-right">
-                        <Typography
-                            variant="h6"
-                            style={{ paddingRight: "15px" }}
-                        >
-                            Check out this site's code here!
-                            <a href="https://github.com/Timothyw0/react-wedding">
-                                <i
-                                    className="fa fa-github"
-                                    style={{
-                                        paddingLeft: "15px",
-                                        fontSize: "24px",
-                                    }}
-                                ></i>
-                            </a>
-                        </Typography>
-                    </span>
-                </div>
-            </footer>
-        </div>
+                        <form onSubmit={checkPass}>
+                            <TextField
+                                id="password-field"
+                                variant="standard"
+                                placeholder="Password"
+                                className="pass-modal"
+                                value={pass}
+                                onChange={handleChange}
+                                type="password"
+                            />
+                            <Button type="submit" disabled={pass.length <= 0}>
+                                Enter!
+                            </Button>
+                        </form>
+                    </DialogContent>
+                </Dialog>
+                <section
+                    id="home"
+                    className="home-page"
+                    style={{
+                        backgroundImage: `url('${homePhoto}')`,
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                    }}
+                >
+                    <Box sx={{ width: "40%", margin: "auto" }}>
+                        <Card variant="outlined">
+                            <CardContent>
+                                <Typography
+                                    variant="h3"
+                                    style={{ fontFamily: "Fairplay Display" }}
+                                >
+                                    A Brrap & A Brrap
+                                </Typography>
+                                <img
+                                    src={divider}
+                                    alt="Divider"
+                                    style={{ width: "80%", padding: "15px" }}
+                                ></img>
+                                <Typography
+                                    variant="h6"
+                                    style={{ fontFamily: "Fairplay Display" }}
+                                >
+                                    well meaning and kindly.
+                                    <br />
+                                    {'"a benevolent smile"'}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Box>
+                </section>
+                <section id="about">
+                    <AboutUs />
+                </section>
+                <footer className="footer">
+                    <div className="footer-div">
+                        <span className="footer-left">
+                            <Typography
+                                variant="h6"
+                                style={{
+                                    paddingLeft: "15px",
+                                    fontFamily: "Fairplay Display",
+                                }}
+                            >
+                                Created by Timothy Wang
+                            </Typography>
+                        </span>
+                        <span className="footer-right">
+                            <Typography
+                                variant="h6"
+                                style={{
+                                    paddingRight: "15px",
+                                    fontFamily: "Fairplay Display",
+                                }}
+                            >
+                                Check out this site's code here!
+                                <a href="https://github.com/Timothyw0/react-wedding">
+                                    <i
+                                        className="fa fa-github"
+                                        style={{
+                                            paddingLeft: "15px",
+                                            fontSize: "24px",
+                                        }}
+                                    ></i>
+                                </a>
+                            </Typography>
+                        </span>
+                    </div>
+                </footer>
+            </div>
+        </ThemeProvider>
     );
 }
 

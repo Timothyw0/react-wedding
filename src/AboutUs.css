@@ -1,0 +1,33 @@
+.about-div {
+    height: 100vh;
+    background-color: rgba(166, 226, 171, 0.2);
+}
+
+.img-div {
+    align-items: center;
+    float: left;
+    width: 100%;
+    padding-top: 10vh;
+    padding-bottom: 12vh;
+}
+
+.about-img {
+    border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.person1 {
+    float: left;
+    margin: auto;
+    width: 30%;
+    margin-left: 20%;
+}
+
+.person2 {
+    float: left;
+    margin: auto;
+    width: 30%;
+    margin-right: 20%;
+}

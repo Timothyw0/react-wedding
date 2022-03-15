@@ -8,8 +8,8 @@
   align-items: center;
 }
 
-.MuiBox-root-4 {
-  padding-top: 20%;
+.MuiBox-root {
+  padding-top: calc(100vh/2.8);
 }
 
 .MuiCard-root {
