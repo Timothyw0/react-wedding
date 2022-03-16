@@ -1,6 +1,24 @@
 .about-div {
-    height: 100vh;
+    height: 85vh;
     background-color: rgba(166, 226, 171, 0.2);
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+    .about-div {
+        height: 60vh;
+    }
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 1000px)
+  and (orientation: landscape) {
+    .about-div {
+        height: 110vh;
+    }
 }
 
 .img-div {
@@ -8,7 +26,11 @@
     float: left;
     width: 100%;
     padding-top: 10vh;
-    padding-bottom: 12vh;
+    padding-bottom: 6vh;
+}
+
+.divider-div {
+    padding-bottom: 6vh;
 }
 
 .about-img {

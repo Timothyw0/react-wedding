@@ -1,0 +1,38 @@
+.party-div {
+    height: 180vh;
+    background: linear-gradient(45deg, rgba(128,255,219,.3), rgba(83,144,217,.3));
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+    .party-div {
+        height: 90vh;
+    }
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 1000px)
+  and (orientation: landscape) {
+      .party-div {
+          height: 260vh;
+      }
+}
+
+.party-header {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.party-img {
+    border-radius: 50%;
+    width: 10vw;
+    height: 10vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.MuiGrid-item {
+    padding-bottom: 20px;
+}

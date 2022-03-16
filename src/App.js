@@ -17,6 +17,7 @@ import {
 } from "@material-ui/core";
 import Topbar from "./Topbar";
 import AboutUs from "./AboutUs";
+import Party from "./Party";
 import "./App.css";
 const sha512 = require("js-sha512").sha512;
 
@@ -143,6 +144,9 @@ function App() {
                 </section>
                 <section id="about">
                     <AboutUs />
+                </section>
+                <section id="party">
+                    <Party />
                 </section>
                 <footer className="footer">
                     <div className="footer-div">

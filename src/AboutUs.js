@@ -1,17 +1,5 @@
-import {
-    Box,
-    Button,
-    Card,
-    CardContent,
-    Dialog,
-    DialogContent,
-    makeStyles,
-    Typography,
-    TextField,
-    createTheme,
-    responsiveFontSizes,
-    ThemeProvider,
-} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 import manPhoto from "./man.jpeg";
 import womanPhoto from "./woman.jpeg";
 import "./AboutUs.css";
@@ -23,7 +11,7 @@ function AboutUs() {
                 <div className="person1">
                     <img src={manPhoto} className="about-img"></img>
                     <Typography
-                        variant="h4"
+                        variant="h3"
                         style={{ fontFamily: "Fairplay Display" }}
                     >
                         Brrap Brrap 1
@@ -39,7 +27,7 @@ function AboutUs() {
                 <div className="person2">
                     <img src={womanPhoto} className="about-img"></img>
                     <Typography
-                        variant="h4"
+                        variant="h3"
                         style={{ fontFamily: "Fairplay Display" }}
                         className="person-text"
                     >
@@ -54,13 +42,26 @@ function AboutUs() {
                     </Typography>
                 </div>
             </div>
+            <div className="divider-div">
+                <Divider
+                    variant="middle"
+                    style={{
+                        width: "75%",
+                        background: "black",
+                        margin: "auto",
+                    }}
+                />
+            </div>
             <div className="story-div">
                 <Typography
                     variant="h4"
-                    style={{ fontFamily: "Fairplay Display" }}
+                    style={{
+                        fontFamily: "Fairplay Display",
+                        wordWrap: "break-word",
+                    }}
                 >
-                    Brrap
-                    BrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrap
+                    Brrap BrrapBrrapBrrapBrrapBrrapBrrap
+                    BrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrap
                 </Typography>
             </div>
         </div>
