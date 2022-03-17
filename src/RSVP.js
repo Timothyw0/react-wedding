@@ -24,10 +24,10 @@ function RSVP() {
                 <Box sx={{ width: "60%", margin: "auto" }}>
                     <Card variant="outlined">
                         <CardContent>
-                            <Typography variant="h3" className="rsvp-text">
+                            <Typography variant="h3" className="rsvp-text" style={{ fontFamily: "Fairplay Display" }}>
                                 We hope that you can make it!
                             </Typography>
-                            <Typography variant="h4" className="rsvp-text">
+                            <Typography variant="h4" className="rsvp-text" style={{ fontFamily: "Fairplay Display" }}>
                                 Please enter your information below to RSVP:
                             </Typography>
                             <form onSubmit={submitRSVP}>

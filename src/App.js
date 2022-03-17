@@ -17,7 +17,7 @@ import {
 } from "@material-ui/core";
 import Topbar from "./Topbar";
 import AboutUs from "./AboutUs";
-import Details from "./Details";
+import Events from "./Events";
 import Party from "./Party";
 import RSVP from "./RSVP";
 import "./App.css";
@@ -150,8 +150,8 @@ function App() {
                 <section id="party">
                     <Party />
                 </section>
-                <section id="details">
-                    <Details />
+                <section id="events">
+                    <Events />
                 </section>
                 <section id="rsvp">
                     <RSVP />
