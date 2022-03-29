@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import rsvpPhoto from "../RSVP.jpg";
+import db from "../firebase";
+import { collection, getDocs, addDoc } from "firebase/firestore/lite";
 import "./RSVP.css";
 
 function RSVP() {
@@ -17,14 +19,54 @@ function RSVP() {
     const [email, setEmail] = useState("");
     const [numGuests, setNumGuests] = useState(0);
 
-    const submitRSVP = (event) => {};
+    const submitRSVP = async (event) => {
+        event.preventDefault();
+        let error = false;
+        const rsvpCol = collection(db, "wedding-dev");
+        const rsvps = await getDocs(rsvpCol);
+        if (!rsvps.docs) {
+            alert("Something went wrong! Please tell Tim!");
+            return;
+        }
+        // Check if they are already RSVP'd
+        rsvps.docs.map((doc) => {
+            let data = doc.data();
+            if (data.email === email) {
+                alert("You are already RSVP'd!");
+                error = true;
+                return;
+            }
+        });
+        if (error) {
+            return;
+        }
+        // Add them to the database if new
+        const add = await addDoc(rsvpCol, {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            numGuests: numGuests
+        });
+        if (!add) {
+            alert("Something went wrong! Please tell Tim!");
+            return;
+        } else {
+            alert("You have RSVP'd! Can't wait to see you!");
+            return;
+        }
+    };
 
     return (
         <div className="rsvp-div">
             <div className="rsvp-form">
                 <Box sx={{ width: "60%", margin: "auto" }} className="rsvp-box">
-                    <Card className="rsvp-card"  variant="outlined" >
-                        <CardMedia component="img" image={rsvpPhoto} alt="RSVP Photo" className="rsvp-photo" />
+                    <Card className="rsvp-card" variant="outlined">
+                        <CardMedia
+                            component="img"
+                            image={rsvpPhoto}
+                            alt="RSVP Photo"
+                            className="rsvp-photo"
+                        />
                         <CardContent>
                             <Typography
                                 variant="h3"

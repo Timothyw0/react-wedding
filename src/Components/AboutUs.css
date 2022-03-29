@@ -19,7 +19,7 @@
   and (max-device-width: 480px)
   and (orientation: portrait) {
     .about-div {
-        height: 60vh;
+        height: 100%;
     }
     .about-img {
         border-radius: 50%;
@@ -34,7 +34,7 @@
   and (max-device-width: 1000px)
   and (orientation: landscape) {
     .about-div {
-        height: 110vh;
+        height: 100%;
     }
     .about-img {
         border-radius: 50%;
