@@ -1,7 +1,8 @@
 import { Grid, Typography } from "@material-ui/core";
-import divider from "./divider.png";
-import manPhoto from "./man.jpeg";
-import womanPhoto from "./woman.jpeg";
+import divider from "../divider.png";
+import manPhoto from "../man.jpeg";
+import spencer from "../spencer.jpg";
+import womanPhoto from "../woman.jpeg";
 import "./Party.css";
 
 function Party() {
@@ -28,7 +29,7 @@ function Party() {
                     style={{ width: "70%", margin: "auto" }}
                 >
                     <Grid item xs={6}>
-                        <img src={manPhoto} className="party-img"></img>
+                        <img src={spencer} className="party-img" alt="spencer"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -43,7 +44,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={womanPhoto} className="party-img"></img>
+                        <img src={womanPhoto} className="party-img" alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -59,7 +60,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={manPhoto} className="party-img"></img>
+                        <img src={manPhoto} className="party-img"  alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -74,7 +75,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={womanPhoto} className="party-img"></img>
+                        <img src={womanPhoto} className="party-img"  alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -90,7 +91,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={manPhoto} className="party-img"></img>
+                        <img src={manPhoto} className="party-img"  alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -105,7 +106,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={womanPhoto} className="party-img"></img>
+                        <img src={womanPhoto} className="party-img" alt="blank" ></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -121,7 +122,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={manPhoto} className="party-img"></img>
+                        <img src={manPhoto} className="party-img" alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -136,7 +137,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={womanPhoto} className="party-img"></img>
+                        <img src={womanPhoto} className="party-img" alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -152,7 +153,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={manPhoto} className="party-img"></img>
+                        <img src={manPhoto} className="party-img" alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}
@@ -167,7 +168,7 @@ function Party() {
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <img src={womanPhoto} className="party-img"></img>
+                        <img src={womanPhoto} className="party-img" alt="blank"></img>
                         <Typography
                             variant="h4"
                             style={{ fontFamily: "Fairplay Display" }}

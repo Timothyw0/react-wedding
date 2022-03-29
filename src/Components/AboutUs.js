@@ -1,15 +1,29 @@
 import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-import manPhoto from "./man.jpeg";
-import womanPhoto from "./woman.jpeg";
+import divider from "../divider.png";
+import manPhoto from "../man.jpeg";
+import womanPhoto from "../woman.jpeg";
 import "./AboutUs.css";
 
 function AboutUs() {
     return (
         <div className="about-div">
+             <header className="about-header">
+                <Typography
+                    variant="h2"
+                    style={{ fontFamily: "Fairplay Display" }}
+                >
+                   About Us 
+                </Typography>
+                <img
+                    src={divider}
+                    alt="Divider"
+                    style={{ width: "20%", padding: "15px" }}
+                ></img>
+            </header>
             <div className="img-div">
                 <div className="person1">
-                    <img src={manPhoto} className="about-img"></img>
+                    <img src={manPhoto} className="about-img" alt="tim"></img>
                     <Typography
                         variant="h3"
                         style={{ fontFamily: "Fairplay Display" }}
@@ -25,7 +39,7 @@ function AboutUs() {
                     </Typography>
                 </div>
                 <div className="person2">
-                    <img src={womanPhoto} className="about-img"></img>
+                    <img src={womanPhoto} className="about-img" alt="madeleine"></img>
                     <Typography
                         variant="h3"
                         style={{ fontFamily: "Fairplay Display" }}

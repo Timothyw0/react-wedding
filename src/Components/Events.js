@@ -1,8 +1,8 @@
 import { Grid, Button, Typography } from "@material-ui/core";
-import divider from "./divider.png";
+import divider from "../divider.png";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
-import manPhoto from "./man.jpeg";
-import womanPhoto from "./woman.jpeg";
+import manPhoto from "../man.jpeg";
+import womanPhoto from "../woman.jpeg";
 import "./Events.css";
 
 function Events() {

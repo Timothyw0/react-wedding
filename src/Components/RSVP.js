@@ -3,10 +3,12 @@ import {
     Button,
     Card,
     CardContent,
+    CardMedia,
     Typography,
     TextField,
 } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import rsvpPhoto from "../RSVP.jpg";
 import "./RSVP.css";
 
 function RSVP() {
@@ -15,19 +17,27 @@ function RSVP() {
     const [email, setEmail] = useState("");
     const [numGuests, setNumGuests] = useState(0);
 
-    const submitRSVP = (event) => {
-    }
+    const submitRSVP = (event) => {};
 
     return (
         <div className="rsvp-div">
             <div className="rsvp-form">
-                <Box sx={{ width: "60%", margin: "auto" }}>
-                    <Card variant="outlined">
+                <Box sx={{ width: "60%", margin: "auto" }} className="rsvp-box">
+                    <Card className="rsvp-card"  variant="outlined" >
+                        <CardMedia component="img" image={rsvpPhoto} alt="RSVP Photo" className="rsvp-photo" />
                         <CardContent>
-                            <Typography variant="h3" className="rsvp-text" style={{ fontFamily: "Fairplay Display" }}>
+                            <Typography
+                                variant="h3"
+                                className="rsvp-text"
+                                style={{ fontFamily: "Fairplay Display" }}
+                            >
                                 We hope that you can make it!
                             </Typography>
-                            <Typography variant="h4" className="rsvp-text" style={{ fontFamily: "Fairplay Display" }}>
+                            <Typography
+                                variant="h4"
+                                className="rsvp-text"
+                                style={{ fontFamily: "Fairplay Display" }}
+                            >
                                 Please enter your information below to RSVP:
                             </Typography>
                             <form onSubmit={submitRSVP}>
@@ -37,7 +47,9 @@ function RSVP() {
                                     placeholder="First Name"
                                     className="rsvp-text"
                                     value={firstName}
-                                    onChange={(event) => setFirstName(event.target.value)}
+                                    onChange={(event) =>
+                                        setFirstName(event.target.value)
+                                    }
                                 />
                                 <br />
                                 <TextField
@@ -46,7 +58,9 @@ function RSVP() {
                                     placeholder="Last Name"
                                     className="rsvp-text"
                                     value={lastName}
-                                    onChange={(event) => setLastName(event.target.value)}
+                                    onChange={(event) =>
+                                        setLastName(event.target.value)
+                                    }
                                 />
                                 <br />
                                 <TextField
@@ -56,7 +70,9 @@ function RSVP() {
                                     className="rsvp-text"
                                     type="email"
                                     value={email}
-                                    onChange={(event) => setEmail(event.target.value)}
+                                    onChange={(event) =>
+                                        setEmail(event.target.value)
+                                    }
                                 />
                                 <br />
                                 <TextField

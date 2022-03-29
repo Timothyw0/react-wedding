@@ -15,11 +15,11 @@ import {
     responsiveFontSizes,
     ThemeProvider,
 } from "@material-ui/core";
-import Topbar from "./Topbar";
-import AboutUs from "./AboutUs";
-import Events from "./Events";
-import Party from "./Party";
-import RSVP from "./RSVP";
+import Topbar from "./Components/Topbar";
+import AboutUs from "./Components/AboutUs";
+import Events from "./Components/Events";
+import Party from "./Components/Party";
+import RSVP from "./Components/RSVP";
 import "./App.css";
 const sha512 = require("js-sha512").sha512;
 
