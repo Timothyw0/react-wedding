@@ -1,3 +1,11 @@
+*, html {
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    -webkit-font-smoothing: antialiased;
+}
+
 .App {
   text-align: center;
 }
@@ -31,4 +39,21 @@
 
 .footer-right {
   float: right;
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+    .footer-text {
+      font-size: smaller;
+    }
+}
+
+@media  all 
+  and (min-width: 320px) 
+  and (max-width: 480px) {
+    .footer-text {
+      font-size: smaller;
+    }
 }

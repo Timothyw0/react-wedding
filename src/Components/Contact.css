@@ -1,0 +1,72 @@
+.about-div {
+    height: 100%;
+    background-color: rgba(166, 226, 171, 0.2);
+}
+
+.about-img {
+    border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.about-header {
+    padding-top: 60px;
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+    .about-div {
+        height: 100%;
+    }
+    .about-img {
+        border-radius: 50%;
+        width: 30vw;
+        height: 30vw;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 1000px)
+  and (orientation: landscape) {
+    .about-div {
+        height: 100%;
+    }
+    .about-img {
+        border-radius: 50%;
+        width: 30vw;
+        height: 30vw;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+.contact-div {
+    align-items: center;
+    float: left;
+    width: 100%;
+    padding-bottom: 6vh;
+}
+
+.person1 {
+    float: left;
+    margin: auto;
+    width: 40%;
+    margin-left: 10%;
+}
+
+.person2 {
+    float: right;
+    margin: auto;
+    width: 40%;
+    margin-right: 10%;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}

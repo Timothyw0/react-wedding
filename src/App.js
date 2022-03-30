@@ -15,11 +15,13 @@ import {
     responsiveFontSizes,
     ThemeProvider,
 } from "@material-ui/core";
+import {Link, animateScroll as scroll} from "react-scroll";
 import Topbar from "./Components/Topbar";
 import AboutUs from "./Components/AboutUs";
 import Events from "./Components/Events";
 import Party from "./Components/Party";
 import RSVP from "./Components/RSVP";
+import Contact from "./Components/Contact";
 import "./App.css";
 const sha512 = require("js-sha512").sha512;
 
@@ -155,27 +157,32 @@ function App() {
                 </section>
                 <section id="rsvp">
                     <RSVP />
-                    </section>
+                </section>
+                <section id="contact">
+                    <Contact />
+                </section>
                 <footer className="footer">
                     <div className="footer-div">
                         <span className="footer-left">
                             <Typography
-                                variant="h6"
+                                variant="p"
                                 style={{
                                     paddingLeft: "15px",
                                     fontFamily: "Fairplay Display",
                                 }}
+                                className="footer-text"
                             >
                                 Created by Timothy Wang
                             </Typography>
                         </span>
                         <span className="footer-right">
                             <Typography
-                                variant="h6"
+                                variant="p"
                                 style={{
                                     paddingRight: "15px",
                                     fontFamily: "Fairplay Display",
                                 }}
+                                className="footer-text"
                             >
                                 Check out this site's code here!
                                 <a href="https://github.com/Timothyw0/react-wedding">
