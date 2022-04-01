@@ -1,10 +1,13 @@
 import { Typography } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import divider from "../divider.png";
-import manPhoto from "../man.jpeg";
+import manPhoto from "../man_copy.png";
 import womanPhoto from "../woman.jpeg";
-import backPhoto from "../about_back.png";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 import "./Contact.css";
+
+const images = [{ url: manPhoto }, { url: womanPhoto }];
 
 function Contact() {
     return (
@@ -81,7 +84,7 @@ function Contact() {
                             marginTop: "9px",
                         }}
                     />
-                     <div className="contact-info">
+                    <div className="contact-info">
                         <i
                             class="fa-solid fa-phone"
                             style={{ paddingRight: "10px" }}
@@ -104,6 +107,25 @@ function Contact() {
                         </a>
                     </div>
                 </div>
+            </div>
+            <div className="contact-div">
+                <Carousel
+                    autoPlay={true}
+                    showIndicators={false}
+                    showThumbs={false}
+                    showArrows={false}
+                    showStatus={false}
+                    width={"40%"}
+                    infiniteLoop={true}
+                    interval={5000}
+                >
+                    <div>
+                        <img src={manPhoto} />
+                    </div>
+                    <div>
+                        <img src={womanPhoto} />
+                    </div>
+                </Carousel>
             </div>
         </div>
     );

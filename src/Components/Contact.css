@@ -10,7 +10,11 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.about-header {
+.carousel {
+    margin: auto !important;
+}
+
+.contact-header {
     padding-top: 60px;
 }
 
@@ -18,10 +22,10 @@
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (orientation: portrait) {
-    .about-div {
+    .contact-div {
         height: 100%;
     }
-    .about-img {
+    .contact-img {
         border-radius: 50%;
         width: 30vw;
         height: 30vw;
@@ -33,10 +37,10 @@
   and (min-device-width: 320px) 
   and (max-device-width: 1000px)
   and (orientation: landscape) {
-    .about-div {
+    .contact-div {
         height: 100%;
     }
-    .about-img {
+    .contact-img {
         border-radius: 50%;
         width: 30vw;
         height: 30vw;
