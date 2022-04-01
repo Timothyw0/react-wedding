@@ -3,7 +3,7 @@ import Divider from "@material-ui/core/Divider";
 import divider from "../divider.png";
 import manPhoto from "../man.jpeg";
 import womanPhoto from "../woman.jpeg";
-import backPhoto from "../about_back.png";
+import backPhoto from "../back.png";
 import "./AboutUs.css";
 
 function AboutUs() {

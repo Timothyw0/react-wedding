@@ -15,7 +15,7 @@ function Topbar() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto toptext">
-                        <Link to="home" smooth={true} duration={100}>
+                        <Link to="home" smooth={true} duration={500}>
                             <Nav.Link
                                 href="#home"
                                 className="active anchor-text"
@@ -23,7 +23,7 @@ function Topbar() {
                                 Home
                             </Nav.Link>
                         </Link>
-                        <Link to="about" smooth={true} duration={100}>
+                        <Link to="about" smooth={true} duration={500}>
                             <Nav.Link
                                 href="#about"
                                 className="active anchor-text"
@@ -31,7 +31,7 @@ function Topbar() {
                                 About Us
                             </Nav.Link>
                         </Link>
-                        <Link to="party" smooth={true} duration={100}>
+                        <Link to="party" smooth={true} duration={500}>
                             <Nav.Link
                                 href="#party"
                                 className="active anchor-text"
@@ -39,7 +39,7 @@ function Topbar() {
                                 Wedding Party
                             </Nav.Link>
                         </Link>
-                        <Link to="events" smooth={true} duration={100}>
+                        <Link to="events" smooth={true} duration={500}>
                             <Nav.Link
                                 href="#events"
                                 className="active anchor-text"
@@ -47,7 +47,7 @@ function Topbar() {
                                 Events
                             </Nav.Link>
                         </Link>
-                        <Link to="rsvp" smooth={true} duration={100}>
+                        <Link to="rsvp" smooth={true} duration={500}>
                             <Nav.Link
                                 href="#rsvp"
                                 className="active anchor-text"
@@ -55,7 +55,7 @@ function Topbar() {
                                 RSVP
                             </Nav.Link>
                         </Link>
-                        <Link to="contact" smooth={true} duration={100}>
+                        <Link to="contact" smooth={true} duration={500}>
                             <Nav.Link
                                 href="#contact"
                                 className="active anchor-text"

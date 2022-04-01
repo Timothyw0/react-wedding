@@ -15,7 +15,6 @@ import {
     responsiveFontSizes,
     ThemeProvider,
 } from "@material-ui/core";
-import {Link, animateScroll as scroll} from "react-scroll";
 import Topbar from "./Components/Topbar";
 import AboutUs from "./Components/AboutUs";
 import Events from "./Components/Events";

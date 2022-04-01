@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import rsvpPhoto from "../RSVP.jpg";
+import backPhoto from "../rsvp_back.png";
 import db from "../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore/lite";
 import "./RSVP.css";
@@ -45,7 +46,7 @@ function RSVP() {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            numGuests: numGuests
+            numGuests: numGuests,
         });
         if (!add) {
             alert("Something went wrong! Please tell Tim!");
@@ -57,7 +58,15 @@ function RSVP() {
     };
 
     return (
-        <div className="rsvp-div">
+        <div
+            className="rsvp-div"
+            style={{
+                backgroundImage: `url(${backPhoto})`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+            }}
+        >
             <div className="rsvp-form">
                 <Box sx={{ width: "60%", margin: "auto" }} className="rsvp-box">
                     <Card className="rsvp-card" variant="outlined">
