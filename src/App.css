@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.MuiBox-root {
+.MuiBox-root:not(.topbar) {
   padding-top: calc(100vh/2.8);
 }
 

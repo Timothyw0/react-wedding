@@ -1,7 +1,28 @@
+.topbar-container {
+    background-color: rgba(255,255,255,0.4) !important;
+}
+
 .topbar {
-    --bs-bg-opacity: .5;
+    padding-top:10px;
 }
 
 .toptext {
     font-size: larger;
+}
+
+.nav-link {
+    color: black !important;
+    text-decoration: none !important;
+    font-size: large;
+}
+
+.nav-link:hover {
+    text-decoration: underline !important;
+}
+
+.small-nav-link {
+    font-family: "Fairplay Display";
+    color: black !important;
+    text-decoration: none !important;
+    font-size: medium;
 }
