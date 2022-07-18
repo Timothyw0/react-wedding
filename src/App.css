@@ -57,3 +57,9 @@
       font-size: smaller;
     }
 }
+
+.zhongwen-button {
+  position: absolute !important;
+  top: 5px;
+  right: 5px;
+}

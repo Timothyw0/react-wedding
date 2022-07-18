@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import {
+  Avatar,
   Button,
   Dialog,
   DialogContent,
   makeStyles,
+  IconButton,
   Typography,
   TextField,
   createTheme,
@@ -11,6 +13,10 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import actions from "./actions/languageAction";
+import Zhong from "./assets/images/zhong.png";
+import English from "./assets/images/english.png";
 import Topbar from "./components/Topbar";
 import AboutUs from "./components/AboutUs";
 import Events from "./components/Events";
@@ -39,9 +45,42 @@ theme = responsiveFontSizes(theme);
 
 function App() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   const [pass, setPass] = useState("");
+  const [language, setLanguage] = useState(
+    useSelector((state) => state.language.language)
+  );
   const [showModal, setShowModal] = useState(true);
   const [showError, setShowError] = useState(false);
+
+  const englishText = {
+    welcome: "Welcome!",
+    pass: "Please enter the password to continue:",
+    incorrect: "The password is incorrect! Please try again.",
+    enter: "Enter",
+  };
+  const chineseText = {
+    welcome: "欢迎!",
+    pass: "请输入密码以继续",
+    incorrect: "密码不正确！ 请再试一次。",
+    enter: "进入",
+  };
+  let textLang;
+  if (language === "En") textLang = englishText;
+  else if (language === "Zh") textLang = chineseText;
+
+  const changeLang = () => {
+    if (language === "En") {
+      setLanguage("Zh");
+      dispatch(actions.changeLanguage("Zh"));
+      localStorage.setItem("wang-wedding-lang", "Zh");
+    } else {
+      setLanguage("En");
+      dispatch(actions.changeLanguage("En"));
+      localStorage.removeItem("wang-wedding-lang");
+    }
+  };
 
   const checkPass = (e) => {
     e.preventDefault();
@@ -65,6 +104,12 @@ function App() {
     if (check === "verified") {
       setShowModal(false);
     }
+    // If the local storage has language set, then display chinese
+    const languageCheck = localStorage.getItem("wang-wedding-lang");
+    if (languageCheck) {
+      dispatch(actions.changeLanguage("Zh"));
+      setLanguage("Zh");
+    }
   }, []);
 
   return (
@@ -78,18 +123,25 @@ function App() {
             onClose={() => {}}
           >
             <DialogContent style={{ textAlign: "center" }}>
+              <IconButton
+                className="zhongwen-button"
+                size="small"
+                onClick={changeLang}
+              >
+                <Avatar src={language === "En" ? Zhong : English} />
+              </IconButton>
               <Typography variant="h3" className="pass-modal">
-                Welcome!
+                {textLang.welcome}
               </Typography>
               <Typography variant="h4" className="pass-modal">
-                Please enter the password to continue:
+                {textLang.pass}
               </Typography>
               <Typography
                 variant="h6"
                 className={classes.errorText}
                 hidden={!showError}
               >
-                The password is incorrect! Please try again.
+                {textLang.incorrect}
               </Typography>
               <form onSubmit={checkPass}>
                 <TextField
@@ -102,7 +154,7 @@ function App() {
                   type="password"
                 />
                 <Button type="submit" disabled={pass.length <= 0}>
-                  Enter!
+                  {textLang.enter}
                 </Button>
               </form>
             </DialogContent>
