@@ -25,10 +25,10 @@ const chineseTextHome = {
 };
 
 const englishTextNav = {
-  pages: ["Home", "About Us", "Wedding Party", "Events", "Travel", "RSVP"],
+  pages: ["Home", "Our Story", "Wedding Party", "Events", "Travel", "RSVP"],
   pageLinks: {
     Home: "/",
-    "About Us": "/about",
+    "Our Story": "/story",
     "Wedding Party": "/party",
     Events: "/events",
     Travel: "/travel",
@@ -39,10 +39,10 @@ const englishTextNav = {
 };
 
 const chineseTextNav = {
-  pages: ["主页", "我们", "婚礼派对", "事件", "旅行", "敬请回复"],
+  pages: ["主页", "故事", "婚礼派对", "事件", "旅行", "敬请回复"],
   pageLinks: {
     主页: "/",
-    我们: "/about",
+    故事: "/story",
     婚礼派对: "/party",
     事件: "/events",
     旅行: "/travel",
@@ -93,6 +93,14 @@ const chineseTextTravel = {
   hotel: "酒店",
 };
 
+const englishTextStory = {
+  header: "Our Story",
+};
+
+const chineseTextStory = {
+  header: "我们的故事",
+};
+
 module.exports = {
   englishTextPassword,
   chineseTextPassword,
@@ -106,4 +114,6 @@ module.exports = {
   chineseText404,
   englishTextTravel,
   chineseTextTravel,
+  englishTextStory,
+  chineseTextStory,
 };

@@ -1,12 +1,21 @@
-import { Typography } from "@material-ui/core";
-import Divider from "@material-ui/core/Divider";
+import { Grid, Typography } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import {
+  englishTextStory,
+  chineseTextStory,
+} from "../assets/data/translations";
 import divider from "../assets/images/divider.png";
-import manPhoto from "../assets/images/man.jpeg";
-import womanPhoto from "../assets/images/woman.jpeg";
-import backPhoto from "../assets/images/back.png";
+import us1 from "../assets/images/us.jpg";
+import backPhoto from "../assets/images/story_back.png";
 import "./AboutUs.css";
 
 function AboutUs() {
+  const language = useSelector((state) => state.language.language);
+
+  let textLang;
+  if (language === "En") textLang = englishTextStory;
+  else if (language === "Zh") textLang = chineseTextStory;
+
   return (
     <div
       className="about-div"
@@ -19,7 +28,7 @@ function AboutUs() {
     >
       <header className="about-header">
         <Typography variant="h2" style={{ fontFamily: "Fairplay Display" }}>
-          About Us
+          {textLang.header}
         </Typography>
         <img
           src={divider}
@@ -28,46 +37,14 @@ function AboutUs() {
         ></img>
       </header>
       <div className="img-div">
-        <div className="person1">
-          <img src={manPhoto} className="about-img" alt="tim"></img>
-          <Typography variant="h3" style={{ fontFamily: "Fairplay Display" }}>
-            Brrap Brrap 1
-          </Typography>
-          <Typography
-            variant="body1"
-            style={{ fontFamily: "Fairplay Display" }}
-            className="person-text"
-          >
-            I don't know what I'm doing here
-          </Typography>
-        </div>
-        <div className="person2">
-          <img src={womanPhoto} className="about-img" alt="madeleine"></img>
-          <Typography
-            variant="h3"
-            style={{ fontFamily: "Fairplay Display" }}
-            className="person-text"
-          >
-            Brrap Brrap 2
-          </Typography>
-          <Typography
-            variant="body1"
-            style={{ fontFamily: "Fairplay Display" }}
-            className="person-text"
-          >
-            I don't know what I'm doing here
-          </Typography>
-        </div>
-      </div>
-      <div className="divider-div">
-        <Divider
-          variant="middle"
-          style={{
-            width: "75%",
-            background: "black",
-            margin: "auto",
-          }}
-        />
+        <Grid container spacing={2} alignItems="center" justifyContent="center">
+          <Grid item xs={12} md={3}>
+            <img src={us1} className="about-img" alt="us before"></img>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <img src={us1} className="about-img" alt="madeleine"></img>
+          </Grid>
+        </Grid>
       </div>
       <div className="story-div">
         <Typography

@@ -1,21 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import {
-  GoogleMap,
-  LoadScript,
-  Marker,
-  MarkerWithLabel,
-} from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import {
   englishTextTravel,
   chineseTextTravel,
 } from "../assets/data/translations";
-import back from "../assets/images/travel_back.webp";
+import back from "../assets/images/travel_back.png";
 import "./Travel.css";
-
-const containerStyle = {
-  height: "40vh",
-};
 
 const center = {
   lat: 40.26843488238582,
@@ -25,6 +16,19 @@ const center = {
 const hotel = { lat: 40.26450346734746, lng: -75.13249025392494 };
 
 const Travel = () => {
+  const [containerStyle, setContainerStyle] = useState({
+    height: "40vh",
+    width: "50%",
+    margin: "auto",
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth <= 800) {
+      setContainerStyle({ ...containerStyle, width: "100%" });
+    } else {
+      setContainerStyle({ ...containerStyle, width: "50%" });
+    }
+  });
   const language = useSelector((state) => state.language.language);
 
   let textLang;
@@ -37,8 +41,6 @@ const Travel = () => {
       style={{
         backgroundImage: `url('${back}')`,
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
       }}
     >
       <h1>{textLang.header}</h1>
