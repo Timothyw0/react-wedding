@@ -110,6 +110,7 @@ function Topbar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
+              disableScrollLock={true}
               sx={{
                 display: { xs: "block", md: "none" },
               }}
