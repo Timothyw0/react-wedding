@@ -25,9 +25,11 @@ import Topbar from "./components/Topbar";
 import AboutUs from "./components/AboutUs";
 import Events from "./components/Events";
 import Home from "./components/Home";
+import NotFound from "./components/NotFound";
 import Party from "./components/Party";
 import RSVP from "./components/RSVP";
 import Speeddial from "./components/Speeddial";
+import Travel from "./components/Travel";
 import "./App.css";
 const sha512 = require("js-sha512").sha512;
 
@@ -152,7 +154,9 @@ function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/party" element={<Party />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/travel" element={<Travel />} />
             <Route path="/rsvp" element={<RSVP />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           {/*<section id="about">
           <AboutUs />
