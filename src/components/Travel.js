@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import {
@@ -22,13 +22,19 @@ const Travel = () => {
     margin: "auto",
   });
 
-  window.addEventListener("resize", () => {
+  const checkWidth = () => {
     if (window.innerWidth <= 800) {
       setContainerStyle({ ...containerStyle, width: "100%" });
     } else {
       setContainerStyle({ ...containerStyle, width: "50%" });
     }
-  });
+  };
+
+  useEffect(() => {
+    checkWidth();
+  }, []);
+
+  window.addEventListener("resize", checkWidth);
   const language = useSelector((state) => state.language.language);
 
   let textLang;
