@@ -66,6 +66,7 @@ function Topbar() {
         anchorEl={anchorLang}
         open={openLang}
         onClose={handleClose}
+        disableScrollLock={true}
       >
         {textLang.languageMenu.map((elem) => {
           return (
@@ -79,7 +80,7 @@ function Topbar() {
   );
 
   return (
-    <AppBar position="static" className="topbar-container">
+    <AppBar position="fixed" className="topbar-container">
       <Container style={{ height: 64 }}>
         <Toolbar disableGutters style={{ height: 64 }}>
           <Box
