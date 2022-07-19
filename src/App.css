@@ -17,7 +17,7 @@
 }
 
 .MuiBox-root:not(.topbar) {
-  padding-top: calc(100vh/2.8);
+  padding-top: calc(100vh/3);
 }
 
 .MuiCard-root {

@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@material-ui/core";
 import divider from "../assets/images/divider.png";
 import manPhoto from "../assets/images/man.jpeg";
-import spencer from "../assets/images/spencer.jpg";
+import spencer from "../assets/images/spencer2.png";
 import womanPhoto from "../assets/images/woman.jpeg";
 import "./Party.css";
 
@@ -28,7 +28,7 @@ function Party() {
           <Grid item xs={6}>
             <img src={spencer} className="party-img" alt="spencer"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Spencer Holt
+              Hm
             </Typography>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
               Best Man

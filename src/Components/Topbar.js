@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Container,
+  Grid,
   IconButton,
   Menu,
   MenuItem,
@@ -11,20 +12,30 @@ import {
   Typography,
 } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useDispatch, useSelector } from "react-redux";
+import { englishTextNav, chineseTextNav } from "../assets/data/translations";
 import { NavLink } from "react-router-dom";
+import actions from "../actions/languageAction";
 import "./Topbar.css";
 
-const pages = ["Home", "About Us", "Wedding Party", "Events", "RSVP"];
-const pageLinks = {
-  Home: "/",
-  "About Us": "/about",
-  "Wedding Party": "/party",
-  Events: "/events",
-  RSVP: "/rsvp",
-};
-
 function Topbar() {
+  const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorLang, setAnchorLang] = useState(null);
+  const language = useSelector((state) => state.language.language);
+
+  let textLang;
+  if (language === "En") textLang = englishTextNav;
+  else if (language === "Zh") textLang = chineseTextNav;
+
+  const openLang = Boolean(anchorLang);
+
+  const handleClick = (event) => {
+    setAnchorLang(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorLang(null);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,59 +45,100 @@ function Topbar() {
     setAnchorElNav(null);
   };
 
+  const handleChangeLanguage = () => {
+    if (language === "Zh") {
+      dispatch(actions.changeLanguage("En"));
+      localStorage.removeItem("wang-wedding-lang");
+    } else {
+      dispatch(actions.changeLanguage("Zh"));
+      localStorage.setItem("wang-wedding-lang", "Zh");
+    }
+    handleClose();
+  };
+
+  const langMenu = (
+    <>
+      <Button id="lang-menu" onClick={handleClick} style={{ right: 0 }}>
+        {textLang.changeLanguage}
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorLang}
+        open={openLang}
+        onClose={handleClose}
+      >
+        {textLang.languageMenu.map((elem) => {
+          return (
+            <MenuItem className="lang-menu-item" onClick={handleChangeLanguage}>
+              {elem}
+            </MenuItem>
+          );
+        })}
+      </Menu>
+    </>
+  );
+
   return (
-    <AppBar position="fixed" className="topbar-container">
+    <AppBar position="static" className="topbar-container">
       <Container style={{ height: 64 }}>
-        <Box
-          sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          className="topbar"
-        >
-          <IconButton
-            size="large"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
+        <Toolbar disableGutters style={{ height: 64 }}>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            className="topbar"
           >
-            <MenuIcon style={{ color: "black" }} />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            sx={{
-              display: { xs: "block", md: "none" },
-            }}
+            <IconButton
+              size="large"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon style={{ color: "black" }} />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              {textLang.pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <NavLink
+                    to={textLang.pageLinks[page]}
+                    className="small-nav-link"
+                  >
+                    {page}
+                  </NavLink>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+            className="topbar"
           >
-            {pages.map((page) => (
-              <MenuItem key={page} onClick={handleCloseNavMenu}>
-                <NavLink to={pageLinks[page]} className="small-nav-link">
-                  {page}
-                </NavLink>
-              </MenuItem>
+            {textLang.pages.map((page) => (
+              <NavLink to={textLang.pageLinks[page]} className="nav-link">
+                {page}
+              </NavLink>
             ))}
-          </Menu>
-        </Box>
-        <Box
-          sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-          className="topbar"
-        >
-          {pages.map((page) => (
-            <NavLink to={pageLinks[page]} className="nav-link">
-              {page}
-            </NavLink>
-          ))}
-        </Box>
+          </Box>
+          <Box sx={{ flexGrow: 0 }} className="topbar">
+            {langMenu}
+          </Box>
+        </Toolbar>
       </Container>
     </AppBar>
   );

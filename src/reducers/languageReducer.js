@@ -3,16 +3,15 @@ const initialState = {
 };
 const languageReducer = (state = initialState, action) => {
   const { type, payload } = action;
-  let copyState = state;
+  let newLang;
   switch (type) {
     case "change":
-      console.log("hello");
       if (payload.language === "Zh") {
-        copyState.language = "Zh";
+        newLang = "Zh";
       } else {
-        copyState.language = "En";
+        newLang = "En";
       }
-      return copyState;
+      return { language: newLang };
     default:
       return state;
   }

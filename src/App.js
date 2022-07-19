@@ -14,6 +14,10 @@ import {
 } from "@material-ui/core";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  englishTextPassword,
+  chineseTextPassword,
+} from "./assets/data/translations";
 import actions from "./actions/languageAction";
 import Zhong from "./assets/images/zhong.png";
 import English from "./assets/images/english.png";
@@ -48,35 +52,19 @@ function App() {
   const dispatch = useDispatch();
 
   const [pass, setPass] = useState("");
-  const [language, setLanguage] = useState(
-    useSelector((state) => state.language.language)
-  );
+  const language = useSelector((state) => state.language.language);
   const [showModal, setShowModal] = useState(true);
   const [showError, setShowError] = useState(false);
 
-  const englishText = {
-    welcome: "Welcome!",
-    pass: "Please enter the password to continue:",
-    incorrect: "The password is incorrect! Please try again.",
-    enter: "Enter",
-  };
-  const chineseText = {
-    welcome: "欢迎!",
-    pass: "请输入密码以继续",
-    incorrect: "密码不正确！ 请再试一次。",
-    enter: "进入",
-  };
   let textLang;
-  if (language === "En") textLang = englishText;
-  else if (language === "Zh") textLang = chineseText;
+  if (language === "En") textLang = englishTextPassword;
+  else if (language === "Zh") textLang = chineseTextPassword;
 
   const changeLang = () => {
     if (language === "En") {
-      setLanguage("Zh");
       dispatch(actions.changeLanguage("Zh"));
       localStorage.setItem("wang-wedding-lang", "Zh");
     } else {
-      setLanguage("En");
       dispatch(actions.changeLanguage("En"));
       localStorage.removeItem("wang-wedding-lang");
     }
@@ -108,7 +96,6 @@ function App() {
     const languageCheck = localStorage.getItem("wang-wedding-lang");
     if (languageCheck) {
       dispatch(actions.changeLanguage("Zh"));
-      setLanguage("Zh");
     }
   }, []);
 

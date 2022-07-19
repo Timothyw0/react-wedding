@@ -2,12 +2,14 @@
     background-color: rgba(255,255,255,0.4) !important;
 }
 
-.topbar {
-    padding-top:10px;
-}
-
 .toptext {
     font-size: larger;
+}
+
+#lang-menu, .lang-menu-item {
+    font-family: "Fairplay Display";
+    text-transform: capitalize;
+    font-size: large;
 }
 
 .nav-link {

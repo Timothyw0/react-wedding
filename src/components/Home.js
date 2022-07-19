@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Card, CardContent, Typography } from "@material-ui/core";
+import { englishTextHome, chineseTextHome } from "../assets/data/translations";
+import { useSelector } from "react-redux";
 import homePhoto from "../assets/images/home_photo.jpeg";
 import divider from "../assets/images/divider.png";
 
 const Home = () => {
+  const language = useSelector((state) => state.language.language);
+
+  let textLang;
+  if (language === "En") textLang = englishTextHome;
+  else if (language === "Zh") textLang = chineseTextHome;
+
   return (
     <section
       id="home"
@@ -15,11 +23,13 @@ const Home = () => {
         backgroundPosition: "center",
       }}
     >
-      <Box sx={{ width: "40%", margin: "auto" }}>
-        <Card variant="outlined">
+      <Box sx={{ width: "50%", margin: "auto" }}>
+        <Card variant="outlined" style={{ borderRadius: "30px" }}>
           <CardContent>
             <Typography variant="h3" style={{ fontFamily: "Fairplay Display" }}>
-              A Brrap & A Brrap
+              {textLang.madeleine}
+              <br />& <br />
+              {textLang.tim}
             </Typography>
             <img
               src={divider}
@@ -27,9 +37,7 @@ const Home = () => {
               style={{ width: "80%", padding: "15px" }}
             ></img>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
+              {textLang.date}
             </Typography>
           </CardContent>
         </Card>
