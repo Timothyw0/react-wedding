@@ -1,6 +1,6 @@
 .about-div {
     padding-top: 50px;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(166, 226, 171, 0.2);
 }
 
@@ -19,7 +19,7 @@
   and (max-device-width: 480px)
   and (orientation: portrait) {
     .about-div {
-        height: 100vh;
+        height: 100%;
     }
     .about-img {
         border-radius: 20px;
@@ -54,5 +54,29 @@
 }
 
 .story-div {
+    text-align: justify;
     padding-bottom: 50px;
+    margin: auto;
+    width: 60%;
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 1000px)
+  and (orientation: landscape) {
+    .story-div h4 {
+        font-size: medium;
+    }
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+      .story-div {
+          padding-bottom: 80px;
+      }
+    .story-div h4 {
+        font-size: medium;
+    }
 }

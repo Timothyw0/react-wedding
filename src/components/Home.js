@@ -38,6 +38,8 @@ const Home = () => {
             ></img>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
               {textLang.date}
+              <br />
+              {textLang.location}
             </Typography>
           </CardContent>
         </Card>

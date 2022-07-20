@@ -16,12 +16,14 @@ const englishTextHome = {
   tim: "Timothy Wang",
   madeleine: "Madeleine Herring",
   date: "September 23, 2023",
+  location: "The Warrington Country Club",
 };
 
 const chineseTextHome = {
   tim: "王大明",
   madeleine: "沛欣",
   date: "2023 年 9 月 23 日",
+  location: "The Warrington Country Club",
 };
 
 const englishTextNav = {
@@ -95,10 +97,14 @@ const chineseTextTravel = {
 
 const englishTextStory = {
   header: "Our Story",
+  story: `We met in 2019 in Troy, NY. Tim went to school at RPI and Madeleine went to school at Russell Sage College. We met at a bar called “The Ruck” and hit it off from there.
+     After graduation, Tim started his job in Jersey City, while Madeleine started graduate school at Fordham University. Three years later... on March 25, 2022 Tim proposed in Boston, Massachusetts. We currently live in Jersey City, and are as happy as could be together!`,
 };
 
 const chineseTextStory = {
   header: "我们的故事",
+  story:
+    "我们于 2019 年在纽约州特洛伊相遇。 Tim 在 RPI 上学，Madeleine 在 Russell Sage 学院上学。 我们在一家名为“The Ruck”的酒吧相遇，并从那里一拍即合。 毕业后，Tim 在泽西城开始了他的工作，而 Madeleine 则在福特汉姆大学开始了研究生学习。 三年后……2022 年 3 月 25 日，Tim 在马萨诸塞州波士顿求婚。 我们现在住在泽西城，在一起很开心！",
 };
 
 module.exports = {

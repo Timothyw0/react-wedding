@@ -16,6 +16,16 @@
   align-items: center;
 }
 
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 900px)
+  and (orientation: landscape) {
+    .home-page {
+      height: 100%;
+      padding-bottom: 100px;
+    }
+}
+
 .not-found {
   padding-top: calc(100vh/3);
   height: 100vh;

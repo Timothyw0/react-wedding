@@ -49,13 +49,13 @@ function AboutUs() {
       <div className="story-div">
         <Typography
           variant="h4"
+          display="inline"
           style={{
             fontFamily: "Fairplay Display",
             wordWrap: "break-word",
           }}
         >
-          Brrap BrrapBrrapBrrapBrrapBrrapBrrap
-          BrrapBrrapBrrapBrrapBrrapBrrapBrrapBrrap
+          {textLang.story}
         </Typography>
       </div>
     </div>
