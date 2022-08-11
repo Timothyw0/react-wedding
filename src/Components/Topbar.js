@@ -115,27 +115,31 @@ function Topbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {textLang.pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <NavLink
-                    to={textLang.pageLinks[page]}
-                    className="small-nav-link"
-                  >
-                    {page}
-                  </NavLink>
-                </MenuItem>
-              ))}
+              {textLang.pages.map((page) => {
+                return (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <NavLink
+                      to={textLang.pageLinks[page]}
+                      className="small-nav-link"
+                    >
+                      {page}
+                    </NavLink>
+                  </MenuItem>
+                );
+              })}
             </Menu>
           </Box>
           <Box
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             className="topbar"
           >
-            {textLang.pages.map((page) => (
-              <NavLink to={textLang.pageLinks[page]} className="nav-link">
-                {page}
-              </NavLink>
-            ))}
+            {textLang.pages.map((page) => {
+              return (
+                <NavLink to={textLang.pageLinks[page]} className="nav-link">
+                  {page}
+                </NavLink>
+              );
+            })}
           </Box>
           <Box sx={{ flexGrow: 0 }} className="topbar">
             {langMenu}

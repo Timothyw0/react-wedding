@@ -40,6 +40,8 @@ const Home = () => {
               {textLang.date}
               <br />
               {textLang.location}
+              <br />
+              {textLang.city}
             </Typography>
           </CardContent>
         </Card>

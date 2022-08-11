@@ -1,5 +1,5 @@
 .topbar-container {
-    background-color: rgba(255,255,255,0.4) !important;
+    background-color: rgba(255,255,255,0.9) !important;
 }
 
 .toptext {
@@ -14,11 +14,18 @@
 
 .nav-link {
     color: black !important;
-    text-decoration: none !important;
     font-size: large;
 }
 
+.nav-link.active {
+    text-decoration: underline !important;
+}
+
 .nav-link:hover {
+    text-decoration: underline !important;
+}
+
+.small-nav-link.active {
     text-decoration: underline !important;
 }
 

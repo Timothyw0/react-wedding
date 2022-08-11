@@ -27,6 +27,8 @@ import Events from "./components/Events";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import Party from "./components/Party";
+import Questions from "./components/Questions";
+import Registry from "./components/Registry";
 import RSVP from "./components/RSVP";
 import Speeddial from "./components/Speeddial";
 import Travel from "./components/Travel";
@@ -154,8 +156,10 @@ function App() {
             <Route path="/story" element={<AboutUs />} />
             <Route path="/party" element={<Party />} />
             <Route path="/events" element={<Events />} />
-            <Route path="/travel" element={<Travel />} />
+            <Route path="/accommodations" element={<Travel />} />
             <Route path="/rsvp" element={<RSVP />} />
+            <Route path="/registry" element={<Registry />} />
+            <Route path="/questions" element={<Questions />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           {/*<section id="about">

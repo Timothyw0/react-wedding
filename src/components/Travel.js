@@ -6,6 +6,7 @@ import {
   chineseTextTravel,
 } from "../assets/data/translations";
 import back from "../assets/images/travel_back.png";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "./Travel.css";
 
 const center = {
@@ -57,6 +58,10 @@ const Travel = () => {
         <br />
         {textLang.phoneText}: {textLang.phone}
       </h2>
+      <br />
+      <a href={textLang.hotelURL} style={{ fontSize: "large" }} target="_blank">
+        {textLang.hotelText} <OpenInNewIcon fontSize="x-small" />
+      </a>
       <br />
       <br />
       <div className="map-div">
