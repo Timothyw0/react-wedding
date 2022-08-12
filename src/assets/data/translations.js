@@ -249,6 +249,32 @@ const chineseTextRSVP = {
   checkFieldMessage: ["你还没有填写", "为人#"],
 };
 
+const englishTextEvents = {
+  events: "Events",
+  rehearsal: "Rehearsal Dinner",
+  invite: "(Invite Only)",
+  rehearsalDate: "Friday, September 22, 2023",
+  ceremony: "Ceremony",
+  ceremonyDate: "Saturday, September 23, 2023",
+  ceremonyArrive: "Please arrive 30 minutes prior",
+  cocktail: "Cocktail Hour",
+  reception: "Reception",
+  viewMap: "View on Map ",
+};
+
+const chineseTextEvents = {
+  events: "事件",
+  rehearsal: "排练晚宴",
+  invite: "(只有邀请)",
+  rehearsalDate: "2023 年 9 月 22 日，星期五",
+  ceremony: "仪式",
+  ceremonyDate: "2023 年 9 月 23 日星期六",
+  ceremonyArrive: "请提前30分钟到达",
+  cocktail: "鸡尾酒时间",
+  reception: "晚餐",
+  viewMap: "地图 ",
+};
+
 module.exports = {
   englishTextPassword,
   chineseTextPassword,
@@ -272,4 +298,6 @@ module.exports = {
   chineseTextParty,
   englishTextRSVP,
   chineseTextRSVP,
+  englishTextEvents,
+  chineseTextEvents,
 };

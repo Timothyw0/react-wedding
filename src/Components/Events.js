@@ -1,16 +1,55 @@
-import { Grid, Button, Typography } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  Divider,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+} from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  englishTextEvents,
+  chineseTextEvents,
+} from "../assets/data/translations";
 import divider from "../assets/images/divider.png";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import FilterVintageIcon from "@mui/icons-material/FilterVintage";
+import CelebrationIcon from "@mui/icons-material/Celebration";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import back from "../assets/images/qa_back.jpeg";
 import manPhoto from "../assets/images/man.jpeg";
 import womanPhoto from "../assets/images/woman.jpeg";
 import "./Events.css";
 
 function Events() {
-  return (
-    <div className="events-div">
+  const [width, setWidth] = useState(window.innerWidth);
+  const language = useSelector((state) => state.language.language);
+
+  let textLang;
+  if (language === "En") textLang = englishTextEvents;
+  else if (language === "Zh") textLang = chineseTextEvents;
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
+
+  let eventInfo = (
+    <>
       <header className="events-header">
         <Typography variant="h2" style={{ fontFamily: "Fairplay Display" }}>
-          Itenerary
+          {textLang.events}
         </Typography>
         <img
           src={divider}
@@ -22,9 +61,11 @@ function Events() {
         <Grid
           container
           rowSpacing={1}
+          justifyContent="space-between"
           columnSpacing={{ xs: 1, sm: 1, md: 1 }}
           style={{ width: "90%", margin: "auto" }}
         >
+          {/* FIRST ROW */}
           <Grid
             item
             container
@@ -33,14 +74,27 @@ function Events() {
             direction="column"
             display="flex"
           >
-            <Typography variant="h3" style={{ fontFamily: "Fairplay Display" }}>
-              Welcome Dinner
+            <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
+              {textLang.rehearsal} <br />
+              {textLang.invite}
             </Typography>
-            <Typography variant="h5" style={{ fontFamily: "Fairplay Display" }}>
-              Friday, June 7, 2019
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              {textLang.rehearsalDate}
             </Typography>
-            <Typography variant="h5" style={{ fontFamily: "Fairplay Display" }}>
-              8:00 PM
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              6:00 PM
             </Typography>
           </Grid>
           <Grid
@@ -51,30 +105,36 @@ function Events() {
             direction="column"
             display="flex"
           >
-            <LocalBarIcon style={{ margin: "auto", fontSize: "100" }} />
+            <RestaurantIcon style={{ margin: "auto", fontSize: "50" }} />
             <Typography
-              variant="h5"
-              style={{ fontFamily: "Fairplay Display" }}
+              variant={isMobile ? "body2" : "h6"}
+              style={{ fontFamily: "Fairplay Display", margin: "auto" }}
               className="person-text"
             >
-              Fairmont San Francisco <br />
-              950 Mason St <br />
-              San Francisco, CA 94108
+              TJ Smith's Restaurant & Bar <br />
+              1585 Erston Rd <br />
+              Warrington, PA 18976
             </Typography>
             <br />
             <Button
               variant="outlined"
-              style={{ width: "30%", margin: "auto" }}
+              style={{
+                width: "80%",
+                margin: "auto",
+                textTransform: "none",
+                fontSize: "small",
+              }}
               onClick={() =>
                 window.open(
-                  "https://www.google.com/maps/place/101+Hudson+St,+Jersey+City,+NJ+07302/@40.7160775,-74.0372538,17z/data=!3m1!4b1!4m5!3m4!1s0x89c252e3564b6db7:0x60be1eac72163cad!8m2!3d40.7160735!4d-74.0350651",
+                  "https://www.google.com/maps/place/Tj+Smith's+restaurant+%26+bar/@40.263793,-75.130541,15z/data=!4m2!3m1!1s0x0:0x7318c5e2a4703613?sa=X&ved=2ahUKEwiruLGb3MH5AhXVj4kEHXCIAVwQ_BJ6BAhQEAU",
                   "_blank"
                 )
               }
             >
-              View on Map
+              {textLang.viewMap} <OpenInNewIcon fontSize="x-small" />
             </Button>
           </Grid>
+          {/* SECOND ROW */}
           <Grid
             item
             container
@@ -83,14 +143,38 @@ function Events() {
             direction="column"
             display="flex"
           >
-            <Typography variant="h3" style={{ fontFamily: "Fairplay Display" }}>
-              Welcome Dinner
+            <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
+              {textLang.ceremony}
             </Typography>
-            <Typography variant="h5" style={{ fontFamily: "Fairplay Display" }}>
-              Friday, June 7, 2019
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              {textLang.ceremonyDate}
             </Typography>
-            <Typography variant="h5" style={{ fontFamily: "Fairplay Display" }}>
-              8:00 PM
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              6:30 PM
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                fontFamily: "Fairplay Display",
+                marginLeft: "auto",
+                marginRight: "auto",
+                fontSize: isMobile ? "small" : "large",
+                fontWeight: "bold",
+              }}
+            >
+              {textLang.ceremonyArrive}
             </Typography>
           </Grid>
           <Grid
@@ -101,30 +185,38 @@ function Events() {
             direction="column"
             display="flex"
           >
-            <LocalBarIcon style={{ margin: "auto", fontSize: "100" }} />
+            <FilterVintageIcon style={{ margin: "auto", fontSize: "50" }} />
             <Typography
-              variant="h5"
-              style={{ fontFamily: "Fairplay Display" }}
+              variant={isMobile ? "body2" : "h6"}
+              style={{ fontFamily: "Fairplay Display", margin: "auto" }}
               className="person-text"
             >
-              Fairmont San Francisco <br />
-              950 Mason St <br />
-              San Francisco, CA 94108
+              The Warrington Country Club
+              <br />
+              1360 Almshouse Rd #1207
+              <br />
+              Warrington, PA 18976
             </Typography>
             <br />
             <Button
               variant="outlined"
-              style={{ width: "30%", margin: "auto" }}
+              style={{
+                width: "80%",
+                margin: "auto",
+                textTransform: "none",
+                fontSize: "small",
+              }}
               onClick={() =>
                 window.open(
-                  "https://www.google.com/maps/place/101+Hudson+St,+Jersey+City,+NJ+07302/@40.7160775,-74.0372538,17z/data=!3m1!4b1!4m5!3m4!1s0x89c252e3564b6db7:0x60be1eac72163cad!8m2!3d40.7160735!4d-74.0350651",
+                  "https://www.google.com/maps/place/The+Warrington/@40.2683806,-75.1281754,17z/data=!3m2!4b1!5s0x89c6a8f3dce9eea3:0xf44a9967886d3977!4m5!3m4!1s0x89c6a8f08df21f5f:0xda963dae31f39ab9!8m2!3d40.2683806!4d-75.1259867",
                   "_blank"
                 )
               }
             >
-              View on Map
+              {textLang.viewMap} <OpenInNewIcon fontSize="x-small" />
             </Button>
           </Grid>
+          {/* THIRD ROW */}
           <Grid
             item
             container
@@ -133,14 +225,26 @@ function Events() {
             direction="column"
             display="flex"
           >
-            <Typography variant="h3" style={{ fontFamily: "Fairplay Display" }}>
-              Welcome Dinner
+            <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
+              {textLang.cocktail}
             </Typography>
-            <Typography variant="h5" style={{ fontFamily: "Fairplay Display" }}>
-              Friday, June 7, 2019
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              {textLang.ceremonyDate}
             </Typography>
-            <Typography variant="h5" style={{ fontFamily: "Fairplay Display" }}>
-              8:00 PM
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              7:00 PM
             </Typography>
           </Grid>
           <Grid
@@ -151,32 +255,134 @@ function Events() {
             direction="column"
             display="flex"
           >
-            <LocalBarIcon style={{ margin: "auto", fontSize: "100" }} />
+            <LocalBarIcon style={{ margin: "auto", fontSize: "50" }} />
             <Typography
-              variant="h5"
-              style={{ fontFamily: "Fairplay Display" }}
+              variant={isMobile ? "body2" : "h6"}
+              style={{ fontFamily: "Fairplay Display", margin: "auto" }}
               className="person-text"
             >
-              Fairmont San Francisco <br />
-              950 Mason St <br />
-              San Francisco, CA 94108
+              The Warrington Country Club
+              <br />
+              1360 Almshouse Rd #1207
+              <br />
+              Warrington, PA 18976
             </Typography>
             <br />
             <Button
               variant="outlined"
-              style={{ width: "30%", margin: "auto" }}
+              style={{
+                width: "80%",
+                margin: "auto",
+                textTransform: "none",
+                fontSize: "small",
+              }}
               onClick={() =>
                 window.open(
-                  "https://www.google.com/maps/place/101+Hudson+St,+Jersey+City,+NJ+07302/@40.7160775,-74.0372538,17z/data=!3m1!4b1!4m5!3m4!1s0x89c252e3564b6db7:0x60be1eac72163cad!8m2!3d40.7160735!4d-74.0350651",
+                  "https://www.google.com/maps/place/The+Warrington/@40.2683806,-75.1281754,17z/data=!3m2!4b1!5s0x89c6a8f3dce9eea3:0xf44a9967886d3977!4m5!3m4!1s0x89c6a8f08df21f5f:0xda963dae31f39ab9!8m2!3d40.2683806!4d-75.1259867",
                   "_blank"
                 )
               }
             >
-              View on Map
+              {textLang.viewMap} <OpenInNewIcon fontSize="x-small" />
+            </Button>
+          </Grid>
+          {/* FOURTH ROW */}
+          <Grid
+            item
+            container
+            xs={6}
+            justifyContent="center"
+            direction="column"
+            display="flex"
+          >
+            <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
+              {textLang.reception}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              {textLang.ceremonyDate}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              8:00 PM - 12:00 AM
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            container
+            xs={6}
+            justifyContent="center"
+            direction="column"
+            display="flex"
+          >
+            <CelebrationIcon style={{ margin: "auto", fontSize: "50" }} />
+            <Typography
+              variant={isMobile ? "body2" : "h6"}
+              style={{ fontFamily: "Fairplay Display", margin: "auto" }}
+              className="person-text"
+            >
+              The Warrington Country Club
+              <br />
+              1360 Almshouse Rd #1207
+              <br />
+              Warrington, PA 18976
+            </Typography>
+            <br />
+            <Button
+              variant="outlined"
+              style={{
+                width: "80%",
+                margin: "auto",
+                textTransform: "none",
+                fontSize: "small",
+              }}
+              onClick={() =>
+                window.open(
+                  "https://www.google.com/maps/place/The+Warrington/@40.2683806,-75.1281754,17z/data=!3m2!4b1!5s0x89c6a8f3dce9eea3:0xf44a9967886d3977!4m5!3m4!1s0x89c6a8f08df21f5f:0xda963dae31f39ab9!8m2!3d40.2683806!4d-75.1259867",
+                  "_blank"
+                )
+              }
+            >
+              {textLang.viewMap} <OpenInNewIcon fontSize="x-small" />
             </Button>
           </Grid>
         </Grid>
       </div>
+    </>
+  );
+
+  return (
+    <div
+      className="events-div"
+      style={{
+        backgroundImage: `url('${back}')`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% auto",
+      }}
+    >
+      {isMobile ? (
+        eventInfo
+      ) : (
+        <Box sx={{ width: "70%", margin: "auto" }} className="rsvp-box">
+          <Card
+            className="rsvp-card"
+            variant="outlined"
+            style={{ alignItems: "center", display: "flex" }}
+          >
+            <CardContent style={{ margin: "auto" }}>{eventInfo}</CardContent>
+          </Card>
+        </Box>
+      )}
     </div>
   );
 }
