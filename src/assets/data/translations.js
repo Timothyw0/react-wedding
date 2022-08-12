@@ -207,6 +207,48 @@ const chineseTextParty = {
   donny: "新娘的弟弟",
 };
 
+const englishTextRSVP = {
+  header: "We hope that you can make it!",
+  subheader: "Please enter your information below to RSVP:",
+  cannotAttend: "I cannot attend",
+  guests: "# of Guests",
+  email: "Email*",
+  firstname: "First Name*",
+  lastname: "Last Name*",
+  dietary: "Dietary Restrictions",
+  food: "Food Selection*",
+  foodChoices: ["Chicken", "Beef", "Milk"],
+  error: "Something went wrong! Please tell Tim!",
+  success: "You have RSVP'd! Can't wait to see you!",
+  missingEmail: "Please enter your email!",
+  alreadyRSVP: "You are already RSVP'd!",
+  thanks: "Thanks for letting us know! Take care!",
+  thanksRSVP: "Thank you for RSVP'ing!",
+  checkFields: ["First Name", "Last Name", "Email", "Food Selection"],
+  checkFieldMessage: ["You haven't filled out", "for person"],
+};
+
+const chineseTextRSVP = {
+  header: "我们希望您能参加！",
+  subheader: "请在下方输入您的信息以回复：",
+  cannotAttend: "我不能参加",
+  guests: "# 客人",
+  email: "Email*",
+  firstname: "名字*",
+  lastname: "姓*",
+  dietary: "控制饮食",
+  food: "食物选择*",
+  foodChoices: ["鸡", "牛肉", "牛奶"],
+  error: "出问题了！ 请告诉 Tim！",
+  success: "你已经回复了！ 迫不及待地想见到你！",
+  missingEmail: "请输入您的邮箱！",
+  alreadyRSVP: "你已经回复了！",
+  thanks: "感谢您让我们知道！ 小心！",
+  thanksRSVP: "感谢您的回复！",
+  checkFields: ["名字", "姓", "Email", "食物选择"],
+  checkFieldMessage: ["你还没有填写", "为人#"],
+};
+
 module.exports = {
   englishTextPassword,
   chineseTextPassword,
@@ -228,4 +270,6 @@ module.exports = {
   chineseTextQA,
   englishTextParty,
   chineseTextParty,
+  englishTextRSVP,
+  chineseTextRSVP,
 };

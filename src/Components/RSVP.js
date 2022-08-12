@@ -4,7 +4,10 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Checkbox,
   FormControl,
+  FormControlLabel,
+  FormGroup,
   InputLabel,
   Select,
   MenuItem,
@@ -13,6 +16,8 @@ import {
   TextField,
   Divider,
 } from "@material-ui/core";
+import { englishTextRSVP, chineseTextRSVP } from "../assets/data/translations";
+import { useSelector } from "react-redux";
 import MuiAlert from "@mui/material/Alert";
 import React, { useEffect, useState } from "react";
 import rsvpPhoto from "../assets/images/RSVP.jpg";
@@ -29,11 +34,23 @@ function RSVP() {
   const [numGuests, setNumGuests] = useState(0);
   const [rsvpState, setRSVPState] = useState([]);
   const [rsvpInfo, setRSVPInfo] = useState(undefined);
+  const [cannotAttend, setCannotAttend] = useState(false);
+  const [cannotAttendEmail, setCannotAttendEmail] = useState("");
+  const [cannotAttendFirstname, setCannotAttendFirstname] = useState("");
+  const [cannotAttendLastname, setCannotAttendLastname] = useState("");
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
+  const [thanks, setThanks] = useState(false);
   const [failMessage, setFailMessage] = useState("");
+  const [thanksMessage, setThanksMessage] = useState("");
 
   const [width, setWidth] = useState(window.innerWidth);
+
+  const language = useSelector((state) => state.language.language);
+
+  let textLang;
+  if (language === "En") textLang = englishTextRSVP;
+  else if (language === "Zh") textLang = chineseTextRSVP;
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
@@ -61,10 +78,11 @@ function RSVP() {
           food: undefined,
         });
       }
+    } else if (numGuests === 0) {
+      copyRSVP = [];
     } else {
       copyRSVP = copyRSVP.slice(0, numGuests);
     }
-    console.log(copyRSVP);
     setRSVPState(copyRSVP);
   }, [numGuests]);
 
@@ -80,15 +98,25 @@ function RSVP() {
     const rsvpCol = collection(db, "wedding-dev");
     const rsvps = await getDocs(rsvpCol);
     if (!rsvps.docs) {
-      setFailMessage("Something went wrong! Please tell Tim!");
+      setFailMessage(textLang.error);
       setFail(true);
+      return;
+    }
+    // Error check
+    if (cannotAttendEmail.length === 0 && cannotAttend) {
+      setFailMessage(textLang.missingEmail);
+      setFail(true);
+      error = true;
       return;
     }
     // Check if they are already RSVP'd
     rsvps.docs.map((doc) => {
       let data = doc.data();
-      if (data.email === rsvpState[0].email) {
-        setFailMessage("You are already RSVP'd!");
+      if (
+        (rsvpState.length > 0 && data.email === rsvpState[0].email) ||
+        data.email === cannotAttendEmail
+      ) {
+        setFailMessage(textLang.alreadyRSVP);
         setFail(true);
         error = true;
         return;
@@ -97,34 +125,58 @@ function RSVP() {
     if (error) {
       return;
     }
-    // Check if everything is entered
-    for (let i = 0; i < rsvpState.length; i++) {
-      let fields = ["firstName", "lastName", "email", "dietary", "food"];
-      for (const field of fields) {
-        if (field === "email" && i === 0) continue;
-        if (!rsvpState[i][field]) {
-          setFailMessage(`You haven't filled out ${field} for person ${i}!`);
-          setFail(true);
-          error = true;
-          return;
-        }
-      }
-    }
-    // Add them to the database if new
-    for (let i = 0; i < rsvpState.length; i++) {
+    // Now to check if they are not able to attend
+    if (cannotAttend) {
       const add = await addDoc(rsvpCol, {
-        firstName: rsvpState[i].firstName,
-        lastName: rsvpState[i].lastName,
-        email: rsvpState[0].email,
+        email: cannotAttendEmail,
+        firstName: cannotAttendFirstname,
+        lastName: cannotAttendLastname,
+        cannotAttend: true,
       });
       if (!add) {
-        setFailMessage("Something went wrong! Please tell Tim!");
+        setFailMessage(textLang.error);
         setFail(true);
         return;
       }
+      setThanksMessage(textLang.thanks);
+      setThanks(true);
+      return;
+    } else {
+      // Check if everything is entered
+      for (let i = 0; i < rsvpState.length; i++) {
+        let fields = ["firstName", "lastName", "email", "food"];
+        for (const field of fields) {
+          if (field === "email" && i !== 0) continue;
+          if (!rsvpState[i][field] || rsvpState[i][field].length === 0) {
+            setFailMessage(
+              `${textLang.checkFieldMessage[0]} ${textLang.checkFields[i]} ${
+                textLang.checkFieldMessage[1]
+              } ${i + 1}`
+            );
+            setFail(true);
+            error = true;
+            return;
+          }
+        }
+      }
+      // Add them to the database if new
+      for (let i = 0; i < rsvpState.length; i++) {
+        const add = await addDoc(rsvpCol, {
+          firstName: rsvpState[i].firstName,
+          lastName: rsvpState[i].lastName,
+          email: rsvpState[0].email,
+          dietary: rsvpState[i].dietary || "",
+          food: rsvpState[i].food,
+        });
+        if (!add) {
+          setFailMessage(textLang.error);
+          setFail(true);
+          return;
+        }
+      }
+      setSuccess(true);
+      return;
     }
-    setSuccess(true);
-    return;
   };
 
   // setInfo function to set the RSVP state on any form change
@@ -132,11 +184,13 @@ function RSVP() {
     let copyRSVP = [...rsvpState];
     copyRSVP[key][attribute] = value;
     setRSVPState(copyRSVP);
-    console.log(rsvpState);
   };
 
   useEffect(() => {
-    if (rsvpState.length === 0) return;
+    if (rsvpState.length === 0) {
+      setRSVPInfo([]);
+      return;
+    }
     let infoArr = [];
     for (let i = 0; i < numGuests; i++) {
       infoArr.push(
@@ -144,7 +198,7 @@ function RSVP() {
           <TextField
             id="firstname-field"
             variant="standard"
-            placeholder="First Name"
+            placeholder={textLang.firstname}
             className="rsvp-text"
             value={rsvpState[i].firstName}
             onChange={(event) => setInfo(event.target.value, "firstName", i)}
@@ -153,7 +207,7 @@ function RSVP() {
           <TextField
             id="lastname-field"
             variant="standard"
-            placeholder="Last Name"
+            placeholder={textLang.lastname}
             className="rsvp-text"
             value={rsvpState[i].lastName}
             onChange={(event) => setInfo(event.target.value, "lastName", i)}
@@ -164,7 +218,7 @@ function RSVP() {
               <TextField
                 id="email-field"
                 variant="standard"
-                placeholder="Email"
+                placeholder={textLang.email}
                 className="rsvp-text"
                 type="email"
                 value={rsvpState[0].email}
@@ -176,7 +230,7 @@ function RSVP() {
           <TextField
             id="dietary-field"
             variant="standard"
-            placeholder="Dietary Restrictions"
+            placeholder={textLang.dietary}
             className="rsvp-text"
             type="text"
             value={rsvpState[i].dietary}
@@ -185,18 +239,17 @@ function RSVP() {
           <br />
           <FormControl style={{ width: "166px", paddingTop: "0px" }}>
             <InputLabel id="demo-simple-select-label">
-              Food Selection
+              {textLang.food}
             </InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
               value={rsvpState[i].food}
-              label="Food Selection"
+              MenuProps={{ disableScrollLock: true }}
+              label={textLang.food}
               onChange={(event) => setInfo(event.target.value, "food", i)}
             >
-              <MenuItem value={"chicken"}>Chicken</MenuItem>
-              <MenuItem value={"beef"}>Beef</MenuItem>
-              <MenuItem value={"milk"}>Milk</MenuItem>
+              <MenuItem value={"chicken"}>{textLang.foodChoices[0]}</MenuItem>
+              <MenuItem value={"beef"}>{textLang.foodChoices[1]}</MenuItem>
+              <MenuItem value={"milk"}>{textLang.foodChoices[2]}</MenuItem>
             </Select>
           </FormControl>
           <br />
@@ -222,6 +275,7 @@ function RSVP() {
         backgroundImage: `url(${backPhoto})`,
         backgroundSize: "100% auto",
         backgroundRepeat: "no-repeat",
+        overflowY: "scroll",
       }}
     >
       <div className="rsvp-photo-div">
@@ -237,8 +291,8 @@ function RSVP() {
         >
           <Card className="rsvp-card" variant="outlined">
             <CardContent>
-              {success ? (
-                <Typography variant="h4">Thank you for RSVP'ing!</Typography>
+              {success || thanks ? (
+                <Typography variant="h4">{textLang.thanksRSVP}</Typography>
               ) : (
                 <>
                   <Typography
@@ -246,34 +300,94 @@ function RSVP() {
                     className={fail ? "rsvp-text failure-form" : "rsvp-text"}
                     style={{ fontFamily: "Fairplay Display" }}
                   >
-                    We hope that you can make it!
+                    {textLang.header}
                   </Typography>
                   <Typography
                     variant="p"
                     className={fail ? "rsvp-text failure-form" : "rsvp-text"}
                     style={{ fontFamily: "Fairplay Display" }}
                   >
-                    Please enter your information below to RSVP:
+                    {textLang.subheader}
                   </Typography>
                   <form onSubmit={submitRSVP} className="rsvp-form">
+                    <p hidden={cannotAttend}>{textLang.guests}</p>
                     <TextField
                       id="guests-field"
+                      autoFocus
                       variant="standard"
                       placeholder="# of Guests"
                       className="rsvp-text"
                       type="number"
-                      value={numGuests}
-                      onChange={(event) =>
+                      hidden={cannotAttend}
+                      value={Number(numGuests).toString()}
+                      onChange={(event) => {
                         event.target.value < 0
                           ? (event.target.value = 0)
-                          : setNumGuests(event.target.value)
+                          : setNumGuests(Math.min(event.target.value, 8));
+                        setCannotAttend(false);
+                      }}
+                    />
+                    <FormGroup className="rsvp-text">
+                      <FormControlLabel
+                        control={<Checkbox checked={cannotAttend} />}
+                        label={textLang.cannotAttend}
+                        style={{ margin: "auto" }}
+                        hidden={numGuests > 0}
+                        onChange={() => {
+                          setCannotAttend(!cannotAttend);
+                          setNumGuests(0);
+                        }}
+                      />
+                    </FormGroup>
+                    <TextField
+                      id="cannot-email-field"
+                      variant="standard"
+                      placeholder="Email*"
+                      className="rsvp-text"
+                      type="email"
+                      value={cannotAttendEmail}
+                      hidden={!cannotAttend}
+                      onChange={(event) =>
+                        setCannotAttendEmail(event.target.value)
+                      }
+                    />
+                    <br />
+                    <TextField
+                      id="cannot-name-field"
+                      variant="standard"
+                      placeholder={textLang.firstname}
+                      className="rsvp-text"
+                      type="text"
+                      value={cannotAttendFirstname}
+                      hidden={!cannotAttend}
+                      onChange={(event) =>
+                        setCannotAttendFirstname(event.target.value)
+                      }
+                    />
+                    <br />
+                    <TextField
+                      id="cannot-name-field"
+                      variant="standard"
+                      placeholder={textLang.lastname}
+                      className="rsvp-text"
+                      type="text"
+                      value={cannotAttendLastname}
+                      hidden={!cannotAttend}
+                      onChange={(event) =>
+                        setCannotAttendLastname(event.target.value)
                       }
                     />
                     <br />
                     {rsvpInfo}
                     <Button
                       type="submit"
-                      disabled={numGuests === 0}
+                      disabled={
+                        numGuests === 0 &&
+                        cannotAttend &&
+                        (!cannotAttendEmail ||
+                          !cannotAttendFirstname ||
+                          !cannotAttendLastname)
+                      }
                       className={fail ? "failure-form" : ""}
                     >
                       RSVP!
@@ -286,23 +400,33 @@ function RSVP() {
         </Box>
       </div>
       <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={success}
         autoHideDuration={10000}
         onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          You have RSVP'd! Can't wait to see you!
+          {textLang.success}
         </Alert>
       </Snackbar>
       <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={fail}
         autoHideDuration={10000}
         onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           {failMessage}
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={thanks}
+        autoHideDuration={10000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert onClose={handleClose} severity="info" sx={{ width: "100%" }}>
+          {thanksMessage}
         </Alert>
       </Snackbar>
     </div>
