@@ -183,6 +183,30 @@ const chineseTextQA = {
   hereText: "这里",
 };
 
+const englishTextParty = {
+  moh: "Maid of Honor",
+  groomsman: "Groomsman",
+  bridesmaid: "Bridesmaid",
+  bestman: "Bestman",
+  party: "Wedding Party",
+  kim: "Sister of the Bride",
+  emily: "Sister of the Bride",
+  theresa: "Sister of the Groom",
+  donny: "Brother of the Bride",
+};
+
+const chineseTextParty = {
+  moh: "伴娘",
+  groomsman: "伴郎",
+  bridesmaid: "伴娘",
+  bestman: "伴郎",
+  party: "婚礼派对",
+  kim: "新娘的大姐姐",
+  emily: "新娘的妹妹",
+  theresa: "新郎的妹妹",
+  donny: "新娘的弟弟",
+};
+
 module.exports = {
   englishTextPassword,
   chineseTextPassword,
@@ -202,4 +226,6 @@ module.exports = {
   chineseTextRegistry,
   englishTextQA,
   chineseTextQA,
+  englishTextParty,
+  chineseTextParty,
 };

@@ -1,11 +1,12 @@
 .party-div {
+    padding-top: 100px;
     height: 100%;
 }
 
 .party-img {
     border-radius: 50%;
-    width: 20vw;
-    height: 20vw;
+    width: 15vw;
+    height: 15vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
