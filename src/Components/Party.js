@@ -14,6 +14,7 @@ import sarah from "../assets/images/party/sarah.jpeg";
 import donny from "../assets/images/party/donny.jpeg";
 import emily from "../assets/images/party/emily.jpeg";
 import kim from "../assets/images/party/kim.jpeg";
+import marian from "../assets/images/party/marian.jpeg";
 import bridget from "../assets/images/party/bridget.jpeg";
 import womanPhoto from "../assets/images/woman.jpeg";
 import "./Party.css";
@@ -207,7 +208,7 @@ function Party() {
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <img src={womanPhoto} className="party-img" alt="blank"></img>
+            <img src={marian} className="party-img" alt="blank"></img>
             <Typography
               variant="h4"
               style={{ fontFamily: "Fairplay Display" }}
