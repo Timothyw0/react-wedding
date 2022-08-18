@@ -17,6 +17,8 @@ import kim from "../assets/images/party/kim.jpeg";
 import marian from "../assets/images/party/marian.jpeg";
 import michele from "../assets/images/party/michele.jpeg";
 import bridget from "../assets/images/party/bridget.jpeg";
+import theresa from "../assets/images/party/theresa.jpeg";
+import tom from "../assets/images/party/tom.jpeg";
 import womanPhoto from "../assets/images/woman.jpeg";
 import "./Party.css";
 
@@ -64,7 +66,7 @@ function Party() {
           <Grid item xs={6}>
             <img src={spencer} className="party-img" alt="spencer"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Karl Odell
+              Hm
             </Typography>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
               {textLang.bestman}
@@ -87,10 +89,10 @@ function Party() {
           <Grid item xs={6}>
             <img src={manPhoto} className="party-img" alt="blank"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Stephen Signorelli
+              Bruce Wayne
             </Typography>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
-              Boop
+              {textLang.groomsman}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -163,7 +165,7 @@ function Party() {
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <img src={womanPhoto} className="party-img" alt="blank"></img>
+            <img src={theresa} className="party-img" alt="blank"></img>
             <Typography
               variant="h4"
               style={{ fontFamily: "Fairplay Display" }}
@@ -200,7 +202,7 @@ function Party() {
           </Grid>
           {/* Row 7 */}
           <Grid item xs={6}>
-            <img src={manPhoto} className="party-img" alt="blank"></img>
+            <img src={tom} className="party-img" alt="blank"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
               Thomas Maguire
             </Typography>

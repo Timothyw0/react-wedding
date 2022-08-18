@@ -143,6 +143,7 @@ function App() {
                   value={pass}
                   onChange={handleChange}
                   type="password"
+                  autoFocus
                 />
                 <Button type="submit" disabled={pass.length <= 0}>
                   {textLang.enter}

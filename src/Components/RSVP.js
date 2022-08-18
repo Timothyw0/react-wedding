@@ -321,7 +321,11 @@ function RSVP() {
                       className="rsvp-text"
                       type="number"
                       hidden={cannotAttend}
-                      value={Number(numGuests).toString()}
+                      value={
+                        Number(numGuests).toString() === "0"
+                          ? ""
+                          : Number(numGuests).toString()
+                      }
                       onChange={(event) => {
                         event.target.value < 0
                           ? (event.target.value = 0)
