@@ -111,8 +111,8 @@ function Events() {
               style={{ fontFamily: "Fairplay Display", margin: "auto" }}
               className="person-text"
             >
-              TJ Smith's Restaurant & Bar <br />
-              1585 Erston Rd <br />
+              Villa Barolo <br />
+              1373 Easton Rd <br />
               Warrington, PA 18976
             </Typography>
             <br />
@@ -126,7 +126,7 @@ function Events() {
               }}
               onClick={() =>
                 window.open(
-                  "https://www.google.com/maps/place/Tj+Smith's+restaurant+%26+bar/@40.263793,-75.130541,15z/data=!4m2!3m1!1s0x0:0x7318c5e2a4703613?sa=X&ved=2ahUKEwiruLGb3MH5AhXVj4kEHXCIAVwQ_BJ6BAhQEAU",
+                  "https://www.google.com/maps/place/Villa+Barolo/@40.250902,-75.132658,15z/data=!4m2!3m1!1s0x0:0xfac0ecdef8378a97?sa=X&ved=2ahUKEwj_6NvYitH5AhXZkokEHaDDDVkQ_BJ6BAhKEAU",
                   "_blank"
                 )
               }

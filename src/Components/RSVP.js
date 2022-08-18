@@ -90,6 +90,8 @@ function RSVP() {
     setSuccess(false);
     setFail(false);
     setFailMessage("");
+    setThanks(false);
+    setThanksMessage("");
   };
 
   const submitRSVP = async (event) => {
@@ -403,7 +405,7 @@ function RSVP() {
         open={success}
         autoHideDuration={10000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           {textLang.success}
@@ -413,7 +415,7 @@ function RSVP() {
         open={fail}
         autoHideDuration={10000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           {failMessage}
@@ -423,7 +425,7 @@ function RSVP() {
         open={thanks}
         autoHideDuration={10000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="info" sx={{ width: "100%" }}>
           {thanksMessage}
