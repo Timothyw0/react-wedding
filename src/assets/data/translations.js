@@ -7,7 +7,7 @@ const englishTextPassword = {
 
 const chineseTextPassword = {
   welcome: "欢迎!",
-  pass: "请输入密码以继续",
+  pass: "请输入密码",
   incorrect: "密码不正确！ 请再试一次。",
   enter: "进入",
 };
@@ -15,7 +15,7 @@ const chineseTextPassword = {
 const englishTextHome = {
   tim: "Timothy Wang",
   madeleine: "Madeleine Herring",
-  date: "September 23, 2023",
+  date: "September 23, 2023 (Saturday)",
   location: "The Warrington Country Club",
   city: "Warrington, PA",
 };
@@ -23,7 +23,7 @@ const englishTextHome = {
 const chineseTextHome = {
   tim: "王大明",
   madeleine: "沛欣",
-  date: "2023 年 9 月 23 日",
+  date: "2023 年 9 月 23 日 (星期六)",
   location: "The Warrington Country Club",
   city: "Warrington, PA",
 };
@@ -58,9 +58,9 @@ const chineseTextNav = {
     "主页",
     "故事",
     "婚礼派对",
-    "事件",
+    "婚礼程序",
     "住宿",
-    "敬请回复",
+    "敬请注册",
     "礼物登记处",
     "问答",
   ],
@@ -68,9 +68,9 @@ const chineseTextNav = {
     主页: "/",
     故事: "/story",
     婚礼派对: "/party",
-    事件: "/events",
+    婚礼程序: "/events",
     住宿: "/accommodations",
-    敬请回复: "/rsvp",
+    敬请注册: "/rsvp",
     礼物登记处: "/registry",
     问答: "/questions",
   },
@@ -85,7 +85,7 @@ const englishTextDial = {
 };
 
 const chineseTextDial = {
-  email: "沛欣",
+  email: "电子邮箱",
   text: "短信",
   code: "我的代码!",
 };
@@ -141,7 +141,7 @@ const englishTextRegistry = {
 
 const chineseTextRegistry = {
   registryURL: "https://www.zola.com/registry/madeleineandtimothy2023",
-  header: "感谢您考虑我们，请在下面找到我们的礼物注册表！",
+  header: "您可以在下面认购我们所需要的礼物：",
   registryText: "礼物登记处",
 };
 
@@ -162,6 +162,7 @@ const englishTextQA = {
     "You can text Madeleine at (845)-820-3221 or Tim at (732)-939-3051",
     "Yes, milk will be supplied for Pierre",
   ],
+  rsvpText: "here",
   hereText: "here",
 };
 
@@ -169,17 +170,18 @@ const chineseTextQA = {
   questions: [
     "着装要求是什么？",
     "停车情况如何？",
-    "我有饮食限制，我应该怎么告诉你？",
+    "如何提交食物过敏的信息？",
     "我应该预订什么酒店？",
     "与您联系的最佳方式是什么？",
   ],
   answers: [
-    "我们婚礼的着装要求是半正式/鸡尾酒装",
-    "酒店内提供免费停车场，提供 Ubers/Lyfts，距离 Hampton Inn 仅 3 分钟车程",
-    "请在回复中包含任何饮食限制",
-    "我们在附近的 Hampton Inn Doylestown 预订了房间，您可以查看他们的网站",
-    "您可以拨打 (845)-820-3221 给 Madeleine 发短信，或者拨打 (732)-939-3051 给 Tim",
+    "我们婚礼的着装要求是正装出席。",
+    "婚礼场所提供免费停车场。",
+    "请在注册时填写何种食物过敏。",
+    "我们推荐附近的 Hampton Inn Doylestown，您可以查看他们的网站 ",
+    "发短信至：Madelenine (845)-820-3221 或者 王大明 (732)-939-3051",
   ],
+  rsvpText: "注册",
   hereText: "这里",
 };
 
@@ -201,7 +203,7 @@ const chineseTextParty = {
   bridesmaid: "伴娘",
   bestman: "伴郎",
   party: "婚礼派对",
-  kim: "新娘的大姐姐",
+  kim: "新娘的姐姐",
   emily: "新娘的妹妹",
   theresa: "新郎的妹妹",
   donny: "新娘的弟弟",
@@ -224,38 +226,38 @@ const englishTextRSVP = {
   alreadyRSVP: "You are already RSVP'd!",
   thanks: "Thanks for letting us know! Take care!",
   thanksRSVP: "Thank you for RSVP'ing!",
-  checkFields: ["First Name", "Last Name", "Email", "Food Selection"],
-  checkFieldMessage: ["You haven't filled out", "for person"],
+  checkFieldMessage: "Please fill out all required fields!",
+  rsvpButton: "RSVP!",
 };
 
 const chineseTextRSVP = {
-  header: "我们希望您能参加！",
-  subheader: "请在下方输入您的信息以回复：",
-  cannotAttend: "我不能参加",
-  guests: "# 客人",
+  header: "我们真诚地希望您能前来参加婚礼！",
+  subheader: "请在下方输入您的信息：",
+  cannotAttend: "抱歉，我不能出席",
+  guests: "参加人数",
   email: "Email*",
   firstname: "名字*",
   lastname: "姓*",
-  dietary: "控制饮食",
+  dietary: "食物过敏",
   food: "食物选择*",
   foodChoices: ["鸡", "牛肉", "牛奶"],
   error: "出问题了！ 请告诉 Tim！",
   success: "你已经回复了！ 迫不及待地想见到你！",
   missingEmail: "请输入您的邮箱！",
-  alreadyRSVP: "你已经回复了！",
+  alreadyRSVP: "您已经注册了！",
   thanks: "感谢您让我们知道！ 小心！",
   thanksRSVP: "感谢您的回复！",
-  checkFields: ["名字", "姓", "Email", "食物选择"],
-  checkFieldMessage: ["你还没有填写", "为人#"],
+  checkFieldMessage: "请填写所有必要的信息。",
+  rsvpButton: "提交注册!",
 };
 
 const englishTextEvents = {
   events: "Events",
   rehearsal: "Rehearsal Dinner",
   invite: "(Invite Only)",
-  rehearsalDate: "Friday, September 22, 2023",
+  rehearsalDate: "September 22, 2023 (Friday)",
   ceremony: "Ceremony",
-  ceremonyDate: "Saturday, September 23, 2023",
+  ceremonyDate: "September 23, 2023 (Saturday)",
   ceremonyArrive: "Please arrive 30 minutes prior",
   cocktail: "Cocktail Hour",
   reception: "Reception",
@@ -263,15 +265,15 @@ const englishTextEvents = {
 };
 
 const chineseTextEvents = {
-  events: "事件",
-  rehearsal: "排练晚宴",
-  invite: "(只有邀请)",
-  rehearsalDate: "2023 年 9 月 22 日，星期五",
-  ceremony: "仪式",
-  ceremonyDate: "2023 年 9 月 23 日星期六",
+  events: "婚礼程序",
+  rehearsal: "晚宴彩排",
+  invite: "(仅限邀请人员)",
+  rehearsalDate: "2023 年 9 月 22 日 (星期五)",
+  ceremony: "婚礼",
+  ceremonyDate: "2023 年 9 月 23 日 (星期六)",
   ceremonyArrive: "请提前30分钟到达",
-  cocktail: "鸡尾酒时间",
-  reception: "晚餐",
+  cocktail: "鸡尾酒会",
+  reception: "婚宴",
   viewMap: "地图 ",
 };
 

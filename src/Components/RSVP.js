@@ -150,11 +150,7 @@ function RSVP() {
         for (const field of fields) {
           if (field === "email" && i !== 0) continue;
           if (!rsvpState[i][field] || rsvpState[i][field].length === 0) {
-            setFailMessage(
-              `${textLang.checkFieldMessage[0]} ${textLang.checkFields[i]} ${
-                textLang.checkFieldMessage[1]
-              } ${i + 1}`
-            );
+            setFailMessage(textLang.checkFieldMessage);
             setFail(true);
             error = true;
             return;
@@ -312,12 +308,11 @@ function RSVP() {
                     {textLang.subheader}
                   </Typography>
                   <form onSubmit={submitRSVP} className="rsvp-form">
-                    <p hidden={cannotAttend}>{textLang.guests}</p>
                     <TextField
                       id="guests-field"
                       autoFocus
                       variant="standard"
-                      placeholder="# of Guests"
+                      label={textLang.guests}
                       className="rsvp-text"
                       type="number"
                       hidden={cannotAttend}
@@ -387,6 +382,7 @@ function RSVP() {
                     {rsvpInfo}
                     <Button
                       type="submit"
+                      variant="outlined"
                       disabled={
                         numGuests === 0 &&
                         cannotAttend &&
@@ -395,8 +391,9 @@ function RSVP() {
                           !cannotAttendLastname)
                       }
                       className={fail ? "failure-form" : ""}
+                      style={{ color: "blue", textDecoration: "underline" }}
                     >
-                      RSVP!
+                      {textLang.rsvpButton}
                     </Button>
                   </form>
                 </>
@@ -426,7 +423,7 @@ function RSVP() {
         </Alert>
       </Snackbar>
       <Snackbar
-        open={thanks}
+        open={thanks && language !== "Zh"}
         autoHideDuration={10000}
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}

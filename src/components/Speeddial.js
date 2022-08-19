@@ -26,13 +26,16 @@ const Speeddial = () => {
     e.preventDefault();
     switch (type) {
       case "Email Us":
+      case "电子邮箱":
         window.location.href = "mailto:timothyw0@gmail.com";
         break;
       case "Text Us":
+      case "短信":
         window.location.href = "sms://+17329393051";
         break;
       case "Check Out My Code!":
-        window.location.href = "https://github.com/Timothyw0/react-wedding";
+      case "我的代码!":
+        window.open("https://github.com/Timothyw0/react-wedding", "_blank");
         break;
       default:
         break;

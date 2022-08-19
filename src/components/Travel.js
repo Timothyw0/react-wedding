@@ -50,6 +50,12 @@ const Travel = () => {
         backgroundSize: "cover",
       }}
     >
+      {language === "Zh" && (
+        <>
+          <h1>推荐酒店（或自选其它住宿）</h1>
+          <br />
+        </>
+      )}
       <h1>{textLang.header}</h1>
       <br />
       <h2>

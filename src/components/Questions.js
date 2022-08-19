@@ -34,12 +34,12 @@ const Questions = () => {
 
   let pageContent = textLang.questions.map((elem, idx) => {
     let answerText;
-    if (elem.includes("dietary") || elem.includes("饮食")) {
+    if (elem.includes("dietary") || elem.includes("食物")) {
       answerText = (
         <>
           <p>
             {textLang.answers[idx]}{" "}
-            <NavLink to="/rsvp">{textLang.hereText}</NavLink>
+            <NavLink to="/rsvp">{textLang.rsvpText}</NavLink>
           </p>
         </>
       );

@@ -1,5 +1,6 @@
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Card, CardContent } from "@material-ui/core";
 import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 import {
   englishTextStory,
   chineseTextStory,
@@ -10,11 +11,25 @@ import backPhoto from "../assets/images/story_back.png";
 import "./AboutUs.css";
 
 function AboutUs() {
+  const [width, setWidth] = useState(window.innerWidth);
   const language = useSelector((state) => state.language.language);
 
   let textLang;
   if (language === "En") textLang = englishTextStory;
   else if (language === "Zh") textLang = chineseTextStory;
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
 
   return (
     <div
@@ -22,8 +37,6 @@ function AboutUs() {
       style={{
         backgroundImage: `url(${backPhoto})`,
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
       }}
     >
       <header className="about-header">
@@ -47,16 +60,20 @@ function AboutUs() {
         </Grid>
       </div>
       <div className="story-div">
-        <Typography
-          variant="h4"
-          display="inline"
-          style={{
-            fontFamily: "Fairplay Display",
-            wordWrap: "break-word",
-          }}
-        >
-          {textLang.story}
-        </Typography>
+        <Card className="rsvp-card" variant="outlined">
+          <CardContent style={{ padding: isMobile ? "20px" : "50px" }}>
+            <Typography
+              variant="h4"
+              style={{
+                fontFamily: "Fairplay Display",
+                wordWrap: "break-word",
+                textAlign: "justify",
+              }}
+            >
+              {textLang.story}
+            </Typography>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
