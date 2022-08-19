@@ -45,8 +45,8 @@ function Topbar() {
     setAnchorElNav(null);
   };
 
-  const handleChangeLanguage = () => {
-    if (language === "Zh") {
+  const handleChangeLanguage = (newLang) => {
+    if (newLang === "English") {
       dispatch(actions.changeLanguage("En"));
       localStorage.removeItem("wang-wedding-lang");
     } else {
@@ -70,7 +70,12 @@ function Topbar() {
       >
         {textLang.languageMenu.map((elem) => {
           return (
-            <MenuItem className="lang-menu-item" onClick={handleChangeLanguage}>
+            <MenuItem
+              className="lang-menu-item"
+              onClick={() => {
+                handleChangeLanguage(elem);
+              }}
+            >
               {elem}
             </MenuItem>
           );
