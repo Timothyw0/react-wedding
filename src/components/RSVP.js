@@ -196,7 +196,7 @@ function RSVP() {
           <TextField
             id="firstname-field"
             variant="standard"
-            placeholder={textLang.firstname}
+            label={textLang.firstname}
             className="rsvp-text"
             value={rsvpState[i].firstName}
             onChange={(event) => setInfo(event.target.value, "firstName", i)}
@@ -205,7 +205,7 @@ function RSVP() {
           <TextField
             id="lastname-field"
             variant="standard"
-            placeholder={textLang.lastname}
+            label={textLang.lastname}
             className="rsvp-text"
             value={rsvpState[i].lastName}
             onChange={(event) => setInfo(event.target.value, "lastName", i)}
@@ -216,7 +216,7 @@ function RSVP() {
               <TextField
                 id="email-field"
                 variant="standard"
-                placeholder={textLang.email}
+                label={textLang.email}
                 className="rsvp-text"
                 type="email"
                 value={rsvpState[0].email}
@@ -228,7 +228,7 @@ function RSVP() {
           <TextField
             id="dietary-field"
             variant="standard"
-            placeholder={textLang.dietary}
+            label={textLang.dietary}
             className="rsvp-text"
             type="text"
             value={rsvpState[i].dietary}
@@ -343,7 +343,7 @@ function RSVP() {
                     <TextField
                       id="cannot-email-field"
                       variant="standard"
-                      placeholder="Email*"
+                      label="Email*"
                       className="rsvp-text"
                       type="email"
                       value={cannotAttendEmail}
@@ -356,7 +356,7 @@ function RSVP() {
                     <TextField
                       id="cannot-name-field"
                       variant="standard"
-                      placeholder={textLang.firstname}
+                      label={textLang.firstname}
                       className="rsvp-text"
                       type="text"
                       value={cannotAttendFirstname}
@@ -369,7 +369,7 @@ function RSVP() {
                     <TextField
                       id="cannot-name-field"
                       variant="standard"
-                      placeholder={textLang.lastname}
+                      label={textLang.lastname}
                       className="rsvp-text"
                       type="text"
                       value={cannotAttendLastname}
@@ -380,18 +380,22 @@ function RSVP() {
                     />
                     <br />
                     {rsvpInfo}
+                    <br />
                     <Button
                       type="submit"
                       variant="outlined"
                       disabled={
-                        numGuests === 0 &&
-                        cannotAttend &&
-                        (!cannotAttendEmail ||
-                          !cannotAttendFirstname ||
+                        (numGuests === 0 && !cannotAttend) ||
+                        (cannotAttend &&
+                          !cannotAttendEmail &&
+                          !cannotAttendFirstname &&
                           !cannotAttendLastname)
                       }
                       className={fail ? "failure-form" : ""}
-                      style={{ color: "blue", textDecoration: "underline" }}
+                      style={{
+                        textDecoration: "underline",
+                        border: "2px solid",
+                      }}
                     >
                       {textLang.rsvpButton}
                     </Button>
