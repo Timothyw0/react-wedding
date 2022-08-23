@@ -15,6 +15,7 @@ import donny from "../assets/images/party/donny.jpeg";
 import emily from "../assets/images/party/emily.jpeg";
 import kim from "../assets/images/party/kim.jpeg";
 import marian from "../assets/images/party/marian.jpeg";
+import marco from "../assets/images/party/marco.jpeg";
 import michele from "../assets/images/party/michele.jpeg";
 import bridget from "../assets/images/party/bridget.jpeg";
 import theresa from "../assets/images/party/theresa.jpeg";
@@ -156,12 +157,12 @@ function Party() {
           </Grid>
           {/* Row 5 */}
           <Grid item xs={6}>
-            <img src={manPhoto} className="party-img" alt="blank"></img>
+            <img src={marco} className="party-img" alt="blank"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Ahh
+              Marco Barahona
             </Typography>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
-              Boop
+              {textLang.groomsman}
             </Typography>
           </Grid>
           <Grid item xs={6}>

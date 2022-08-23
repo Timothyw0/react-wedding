@@ -279,12 +279,12 @@ function RSVP() {
       <div className="rsvp-photo-div">
         <img
           src={rsvpPhoto}
-          style={{ width: isMobile ? "60%" : "30%", borderRadius: "15px" }}
+          style={{ width: isMobile ? "60%" : "50%", borderRadius: "15px" }}
         />
       </div>
       <div>
         <Box
-          sx={{ width: isMobile ? "60%" : "30%", margin: "auto" }}
+          sx={{ width: isMobile ? "60%" : "50%", margin: "auto" }}
           className="rsvp-box"
         >
           <Card className="rsvp-card" variant="outlined">

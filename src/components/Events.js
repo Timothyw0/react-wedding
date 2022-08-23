@@ -162,7 +162,7 @@ function Events() {
                 fontSize: isMobile ? "small" : "large",
               }}
             >
-              6:30 PM
+              4:30 PM
             </Typography>
             <Typography
               variant="body1"
@@ -244,7 +244,7 @@ function Events() {
                 fontSize: isMobile ? "small" : "large",
               }}
             >
-              7:00 PM
+              5:00 PM
             </Typography>
           </Grid>
           <Grid
@@ -314,7 +314,7 @@ function Events() {
                 fontSize: isMobile ? "small" : "large",
               }}
             >
-              8:00 PM - 12:00 AM
+              6:00 PM - 11:00 PM
             </Typography>
           </Grid>
           <Grid
@@ -373,7 +373,7 @@ function Events() {
       {isMobile ? (
         eventInfo
       ) : (
-        <Box sx={{ width: "70%", margin: "auto" }} className="rsvp-box">
+        <Box sx={{ width: "80%", margin: "auto" }} className="rsvp-box">
           <Card
             className="rsvp-card"
             variant="outlined"
