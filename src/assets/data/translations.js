@@ -160,7 +160,7 @@ const englishTextQA = {
     "Please include any dietary restrictions in the RSVP",
     "We have reserved rooms at the Hampton Inn Doylestown nearby, you can check out their website",
     "You can text Madeleine at (845)-820-3221 or Tim at (732)-939-3051",
-    "Yes, milk will be supplied for Pierre",
+    "Yes, milk will be supplied for Pierre if he decides to choose us over Frisbee Regionals 😫",
   ],
   rsvpText: "here",
   hereText: "here",
@@ -187,9 +187,10 @@ const chineseTextQA = {
 
 const englishTextParty = {
   moh: "Maid of Honor",
+  maoh: "Matron of Honor",
   groomsman: "Groomsman",
   bridesmaid: "Bridesmaid",
-  bestman: "Bestman",
+  bestman: "Best Man",
   party: "Wedding Party",
   kim: "Sister of the Bride",
   emily: "Sister of the Bride",
@@ -199,6 +200,7 @@ const englishTextParty = {
 
 const chineseTextParty = {
   moh: "伴娘",
+  maoh: "伴娘",
   groomsman: "伴郎",
   bridesmaid: "伴娘",
   bestman: "伴郎",

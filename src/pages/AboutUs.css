@@ -1,0 +1,88 @@
+.about-div {
+    padding-top: 40px;
+    padding-bottom: 50px;
+    height: 100%;
+}
+
+.about-img {
+    border-radius: 20px;
+    height: 20vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.about-header {
+    padding-top: 60px;
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+    .about-div {
+        height: 100%;
+    }
+    .about-img {
+        border-radius: 20px;
+        height: 40vw;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 1000px)
+  and (orientation: landscape) {
+    .about-div {
+        height: 100%;
+    }
+    .about-img {
+        border-radius: 20px;
+        height: 30vw;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+.img-div {
+    align-items: center;
+    float: left;
+    width: 100%;
+    padding-bottom: 6vh;
+}
+
+.divider-div {
+    margin-bottom: 6vh;
+}
+
+.story-div {
+    text-align: justify;
+    padding-bottom: 50px;
+    margin: auto;
+    width: 60%;
+}
+
+.gallery-div {
+    text-align: center;
+    margin: auto;
+    width: 90%;
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 1000px)
+  and (orientation: landscape) {
+    .story-div h4 {
+        font-size: medium;
+    }
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (orientation: portrait) {
+      .story-div {
+          padding-bottom: 80px;
+      }
+    .story-div h4 {
+        font-size: medium;
+    }
+}

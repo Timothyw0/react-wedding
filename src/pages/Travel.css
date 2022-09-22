@@ -1,0 +1,38 @@
+.travel-div {
+    padding-top: 120px;
+    padding-bottom: 100px;
+    height: 100vh;
+    align-items: center;
+}
+
+@media  all 
+  and (min-width: 320px) 
+  and (max-width: 480px) {
+    .travel-div {
+      height: 100vh;
+    }
+    .travel-div h1, h2 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media  all 
+  and (min-device-width: 320px) 
+  and (max-device-width: 900px)
+  and (orientation: landscape) {
+    .travel-div {
+        height: 100%;
+        padding-bottom: 100px;
+    }
+}
+
+
+.map-div {
+    margin: auto;
+}
+
+.marker-label {
+    padding-bottom: 50px;
+    font-weight: bold;
+}
