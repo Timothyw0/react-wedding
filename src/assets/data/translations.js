@@ -106,7 +106,8 @@ const englishTextTravel = {
   phone: "(215) 343-8400",
   venue: "Wedding Venue",
   hotel: "Hampton Inn",
-  hotelURL: "https://www.hilton.com/en/hotels/dylpahx-hampton-doylestown/",
+  hotelURL:
+    " https://www.hilton.com/en/book/reservation/deeplink/?ctyhocn=DYLPAHX&groupCode=CHHHWW&arrivaldate=2023-09-22&departuredate=2023-09-24&cid=OM,WW,HILTONLINK,EN,DirectLink&fromId=HILTONLINKDIRECT",
   hotelText: "Hotel Website",
 };
 
@@ -118,7 +119,8 @@ const chineseTextTravel = {
   phone: "(215) 343-8400",
   venue: "婚礼场地",
   hotel: "酒店",
-  hotelURL: "https://www.hilton.com/en/hotels/dylpahx-hampton-doylestown/",
+  hotelURL:
+    " https://www.hilton.com/en/book/reservation/deeplink/?ctyhocn=DYLPAHX&groupCode=CHHHWW&arrivaldate=2023-09-22&departuredate=2023-09-24&cid=OM,WW,HILTONLINK,EN,DirectLink&fromId=HILTONLINKDIRECT",
   hotelText: "酒店网站",
 };
 
