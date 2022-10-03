@@ -154,7 +154,6 @@ const englishTextQA = {
     "I have dietary restrictions, how should I let you know?",
     "What hotel should I book?",
     "What is the best way to contact you?",
-    "Will there be milk?",
   ],
   answers: [
     "The dress code for our wedding is semi-formal/cocktail attire",
@@ -162,7 +161,6 @@ const englishTextQA = {
     "Please include any dietary restrictions in the RSVP",
     "We have reserved rooms at the Hampton Inn Doylestown nearby, you can check out their website",
     "You can text Madeleine at (845)-820-3221 or Tim at (732)-939-3051",
-    "Yes, milk will be supplied for Pierre if he decides to choose us over Frisbee Regionals 😫",
   ],
   rsvpText: "here",
   hereText: "here",

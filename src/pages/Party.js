@@ -134,9 +134,9 @@ function Party() {
           </Grid>
           {/* Row 4 */}
           <Grid item xs={6}>
-            <img src={manPhoto} className="party-img" alt="blank"></img>
+            <img src={marco} className="party-img" alt="blank"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Pierre Fabris
+              Marco Barahona
             </Typography>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
               {textLang.groomsman}
@@ -157,12 +157,12 @@ function Party() {
           </Grid>
           {/* Row 5 */}
           <Grid item xs={6}>
-            <img src={marco} className="party-img" alt="blank"></img>
+            <img src={donny} className="party-img" alt="blank"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Marco Barahona
+              Donny Herring
             </Typography>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
-              {textLang.groomsman}
+              {textLang.donny}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -180,12 +180,12 @@ function Party() {
           </Grid>
           {/* Row 6 */}
           <Grid item xs={6}>
-            <img src={donny} className="party-img" alt="blank"></img>
+            <img src={tom} className="party-img" alt="blank"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Donny Herring
+              Thomas Maguire
             </Typography>
             <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
-              {textLang.donny}
+              {textLang.groomsman}
             </Typography>
           </Grid>
           <Grid item xs={6}>
@@ -202,15 +202,7 @@ function Party() {
             </Typography>
           </Grid>
           {/* Row 7 */}
-          <Grid item xs={6}>
-            <img src={tom} className="party-img" alt="blank"></img>
-            <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
-              Thomas Maguire
-            </Typography>
-            <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
-              {textLang.groomsman}
-            </Typography>
-          </Grid>
+          <Grid item xs={6}></Grid>
           <Grid item xs={6}>
             <img src={marian} className="party-img" alt="blank"></img>
             <Typography
