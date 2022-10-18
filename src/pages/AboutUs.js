@@ -106,10 +106,7 @@ function AboutUs() {
       <div className="img-div">
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid item xs={12} md={3}>
-            <img src={us1} className="about-img" alt="us before"></img>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <img src={us1} className="about-img" alt="madeleine"></img>
+            <img src={us1} className="about-img" alt="Our first picture"></img>
           </Grid>
         </Grid>
       </div>
