@@ -266,29 +266,35 @@ function RSVP() {
     setRSVPInfo(infoArr);
   }, [rsvpState.length]);
 
-  return (
-    <div
-      className="rsvp-div"
-      style={{
+  const rsvpStyle = isMobile
+    ? {
         backgroundImage: `url(${backPhoto})`,
         backgroundSize: "100% auto",
         backgroundRepeat: "no-repeat",
         overflowY: "scroll",
-      }}
-    >
-      <div className="rsvp-photo-div">
-        <img
-          src={rsvpPhoto}
-          style={{ width: isMobile ? "60%" : "50%", borderRadius: "15px" }}
-        />
-      </div>
-      <div>
-        <Box
-          sx={{ width: isMobile ? "60%" : "50%", margin: "auto" }}
-          className="rsvp-box"
-        >
-          <Card className="rsvp-card" variant="outlined">
-            <CardContent>
+      }
+    : {};
+
+  return (
+    <div className="rsvp-div">
+      <Card
+        style={{
+          maxWidth: isMobile ? "100%" : "60%",
+          margin: "auto",
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+          borderRadius: "5px",
+        }}
+      >
+        <CardMedia component="img" height="100%" image={rsvpPhoto} />
+        <CardContent>
+          <div>
+            <Box
+              sx={{
+                width: "100%",
+                margin: "auto",
+              }}
+              className="rsvp-box"
+            >
               {success || thanks ? (
                 <Typography variant="h4">{textLang.thanksRSVP}</Typography>
               ) : (
@@ -352,7 +358,7 @@ function RSVP() {
                         setCannotAttendEmail(event.target.value)
                       }
                     />
-                    <br />
+                    {cannotAttend && <br />}
                     <TextField
                       id="cannot-name-field"
                       variant="standard"
@@ -365,7 +371,7 @@ function RSVP() {
                         setCannotAttendFirstname(event.target.value)
                       }
                     />
-                    <br />
+                    {cannotAttend && <br />}
                     <TextField
                       id="cannot-name-field"
                       variant="standard"
@@ -378,12 +384,13 @@ function RSVP() {
                         setCannotAttendLastname(event.target.value)
                       }
                     />
-                    <br />
+                    {cannotAttend && <br />}
                     {rsvpInfo}
                     <br />
                     <Button
                       type="submit"
                       variant="outlined"
+                      color="primary"
                       disabled={
                         (numGuests === 0 && !cannotAttend) ||
                         (cannotAttend &&
@@ -402,15 +409,15 @@ function RSVP() {
                   </form>
                 </>
               )}
-            </CardContent>
-          </Card>
-        </Box>
-      </div>
+            </Box>
+          </div>
+        </CardContent>
+      </Card>
       <Snackbar
         open={success}
         autoHideDuration={10000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           {textLang.success}
@@ -420,7 +427,7 @@ function RSVP() {
         open={fail}
         autoHideDuration={10000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           {failMessage}
@@ -430,7 +437,7 @@ function RSVP() {
         open={thanks && language !== "Zh"}
         autoHideDuration={10000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity="info" sx={{ width: "100%" }}>
           {thanksMessage}
