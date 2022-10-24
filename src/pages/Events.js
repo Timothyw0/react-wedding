@@ -314,7 +314,7 @@ function Events() {
                 fontSize: isMobile ? "small" : "large",
               }}
             >
-              6:00 PM - 11:00 PM
+              6:00 PM - 10:00 PM
             </Typography>
           </Grid>
           <Grid

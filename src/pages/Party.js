@@ -11,15 +11,17 @@ import divider from "../assets/images/divider.png";
 import manPhoto from "../assets/images/man.jpeg";
 import spencer from "../assets/images/party/spencer.jpg";
 import aidan from "../assets/images/party/aidan.jpg";
-import sarah from "../assets/images/party/sarah.jpg";
+import bridget from "../assets/images/party/bridget.jpeg";
 import donny from "../assets/images/party/donny.jpeg";
 import emily from "../assets/images/party/emily.jpg";
+import jess from "../assets/images/party/jess.jpg";
 import kim from "../assets/images/party/kim.jpeg";
 import marian from "../assets/images/party/marian.jpeg";
 import marco from "../assets/images/party/marco.jpeg";
 import michele from "../assets/images/party/michele.jpeg";
 import pam from "../assets/images/party/pam.jpg";
-import bridget from "../assets/images/party/bridget.jpeg";
+import sarah from "../assets/images/party/sarah.jpg";
+import steff from "../assets/images/party/steff.jpg";
 import theresa from "../assets/images/party/theresa.jpeg";
 import tom from "../assets/images/party/tom.jpeg";
 import womanPhoto from "../assets/images/woman.jpeg";
@@ -113,7 +115,7 @@ function Party() {
           </Grid>
           {/* Row 3 */}
           <Grid item xs={6}>
-            <img src={manPhoto} className="party-img" alt="blank"></img>
+            <img src={steff} className="party-img" alt="blank"></img>
             <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
               Alexander Steff
             </Typography>
@@ -221,7 +223,7 @@ function Party() {
           {/* Row 8 */}
           <Grid item xs={6}></Grid>
           <Grid item xs={6}>
-            <img src={womanPhoto} className="party-img" alt="blank"></img>
+            <img src={jess} className="party-img" alt="blank"></img>
             <Typography
               variant="h4"
               style={{ fontFamily: "Fairplay Display" }}
