@@ -53,8 +53,8 @@ const Home = () => {
         <Grid item xs={12} style={{ marginTop: 20 }}>
           <Card
             style={{
-              width: "100px",
-              height: "100px",
+              width: "200px",
+              height: "150px",
               margin: "auto",
               padding: 3,
               borderRadius: 0,
@@ -63,14 +63,14 @@ const Home = () => {
             <div
               style={{
                 backgroundImage: `url(${cardBack})`,
-                backgroundSize: "cover",
+                backgroundSize: "200px 150px",
                 height: "100%",
                 verticalAlign: "middle",
                 textAlign: "center",
                 display: "flex",
               }}
             >
-              <p>
+              <p style={{ fontSize: "30px" }}>
                 {daysTill || ""}
                 <br />
                 {textLang.days}
