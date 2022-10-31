@@ -18,6 +18,7 @@ const englishTextHome = {
   date: "September 23, 2023",
   city: "Warrington, PA",
   days: "Days",
+  day: "Day",
 };
 
 const chineseTextHome = {
@@ -26,6 +27,7 @@ const chineseTextHome = {
   date: "2023 年 9 月 23 日 (星期六)",
   city: "Warrington, PA",
   days: "天",
+  day: "天",
 };
 
 const englishTextNav = {

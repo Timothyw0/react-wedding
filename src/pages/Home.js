@@ -50,7 +50,7 @@ const Home = () => {
         {textLang.city}
       </Typography>
       <Grid container alignContent="center" justifyContent="center">
-        <Grid item xs={12} style={{ marginTop: 20 }}>
+        <Grid item xs={12} style={{ marginTop: 50 }}>
           <Card
             style={{
               width: "200px",
@@ -73,7 +73,7 @@ const Home = () => {
               <p style={{ fontSize: "30px" }}>
                 {daysTill || ""}
                 <br />
-                {textLang.days}
+                {daysTill === 1 ? textLang.day : textLang.days}!
               </p>
             </div>
           </Card>
