@@ -18,6 +18,15 @@ import {
   gallery6,
   gallery7,
   gallery8,
+  gallery9,
+  gallery10,
+  gallery11,
+  gallery12,
+  gallery13,
+  gallery14,
+  gallery15,
+  gallery16,
+  gallery17,
 } from "../assets/images/gallery";
 import "./AboutUs.css";
 
@@ -25,48 +34,41 @@ function AboutUs() {
   const [width, setWidth] = useState(window.innerWidth);
   const language = useSelector((state) => state.language.language);
 
-  const images = [
-    {
-      src: gallery1,
-      height: 4,
-      width: 3,
-    },
-    {
-      src: gallery2,
-      height: 4,
-      width: 3,
-    },
-    {
-      src: gallery3,
-      height: 4,
-      width: 3,
-    },
-    {
-      src: gallery4,
-      height: 4,
-      width: 3,
-    },
-    {
-      src: gallery5,
-      height: 4,
-      width: 3,
-    },
-    {
-      src: gallery6,
-      height: 4,
-      width: 3,
-    },
-    {
-      src: gallery7,
-      height: 3,
-      width: 4,
-    },
-    {
-      src: gallery8,
-      height: 3,
-      width: 4,
-    },
-  ];
+  const orientation = {
+    wide: { height: 3, width: 4 },
+    tall: { height: 4, width: 3 },
+  };
+  const wides = new Set([7, 8, 13, 15]);
+  const order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+  const picMapping = {
+    1: gallery1,
+    2: gallery2,
+    3: gallery3,
+    4: gallery4,
+    5: gallery5,
+    6: gallery6,
+    7: gallery7,
+    8: gallery8,
+    9: gallery9,
+    10: gallery10,
+    11: gallery11,
+    12: gallery12,
+    13: gallery13,
+    14: gallery14,
+    15: gallery15,
+    16: gallery16,
+    17: gallery17,
+  };
+
+  const images = order.map((pic) => {
+    return {
+      src: picMapping[pic],
+      height: wides.has(pic)
+        ? orientation.wide.height
+        : orientation.tall.height,
+      width: wides.has(pic) ? orientation.wide.width : orientation.tall.width,
+    };
+  });
 
   let textLang;
   if (language === "En") textLang = englishTextStory;
