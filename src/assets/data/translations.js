@@ -15,17 +15,17 @@ const chineseTextPassword = {
 const englishTextHome = {
   tim: "Timothy Wang",
   madeleine: "Madeleine Herring",
-  date: "September 23, 2023 (Saturday)",
-  location: "The Warrington Country Club",
+  date: "September 23, 2023",
   city: "Warrington, PA",
+  days: "Days",
 };
 
 const chineseTextHome = {
   tim: "王大明",
   madeleine: "沛欣",
   date: "2023 年 9 月 23 日 (星期六)",
-  location: "The Warrington Country Club",
   city: "Warrington, PA",
+  days: "天",
 };
 
 const englishTextNav = {

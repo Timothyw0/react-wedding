@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Box, Card, CardContent, Typography } from "@material-ui/core";
+import { Box, Card, CardContent, Grid, Typography } from "@material-ui/core";
 import { englishTextHome, chineseTextHome } from "../assets/data/translations";
 import { useSelector } from "react-redux";
 import homePhoto from "../assets/images/home_back.jpg";
 import divider from "../assets/images/divider.png";
 import back from "../assets/images/qa_back.jpeg";
+import cardBack from "../assets/images/card_back.jpeg";
 
 const Home = () => {
   const [width, setWidth] = useState(window.innerWidth);
+  const [daysTill, setDaysTill] = useState(undefined);
   const language = useSelector((state) => state.language.language);
 
   let textLang;
@@ -19,6 +21,9 @@ const Home = () => {
   }
 
   useEffect(() => {
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayDiff = new Date(2023, 8, 23) - new Date();
+    setDaysTill(Math.ceil(dayDiff / oneDay));
     window.addEventListener("resize", handleWindowSizeChange);
     return () => {
       window.removeEventListener("resize", handleWindowSizeChange);
@@ -42,10 +47,38 @@ const Home = () => {
       <Typography variant="h6" style={{ fontFamily: "Fairplay Display" }}>
         {textLang.date}
         <br />
-        {textLang.location}
-        <br />
         {textLang.city}
       </Typography>
+      <Grid container alignContent="center" justifyContent="center">
+        <Grid item xs={12} style={{ marginTop: 20 }}>
+          <Card
+            style={{
+              width: "100px",
+              height: "100px",
+              margin: "auto",
+              padding: 3,
+              borderRadius: 0,
+            }}
+          >
+            <div
+              style={{
+                backgroundImage: `url(${cardBack})`,
+                backgroundSize: "cover",
+                height: "100%",
+                verticalAlign: "middle",
+                textAlign: "center",
+                display: "flex",
+              }}
+            >
+              <p>
+                {daysTill || ""}
+                <br />
+                {textLang.days}
+              </p>
+            </div>
+          </Card>
+        </Grid>
+      </Grid>
     </>
   );
 
