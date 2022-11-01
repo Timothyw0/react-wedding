@@ -269,6 +269,7 @@ const englishTextEvents = {
   ceremonyArrive: "Please arrive 15 minutes prior",
   cocktail: "Cocktail Hour",
   reception: "Reception",
+  afterparty: "Afterparty",
   viewMap: "View on Map ",
 };
 
@@ -282,6 +283,7 @@ const chineseTextEvents = {
   ceremonyArrive: "请提前15分钟到达",
   cocktail: "鸡尾酒会",
   reception: "婚宴",
+  afterparty: "派对后",
   viewMap: "地图 ",
 };
 

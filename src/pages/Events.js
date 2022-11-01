@@ -14,6 +14,7 @@ import {
   chineseTextEvents,
 } from "../assets/data/translations";
 import divider from "../assets/images/divider.png";
+import SportsBarIcon from "@mui/icons-material/SportsBar";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import FilterVintageIcon from "@mui/icons-material/FilterVintage";
 import CelebrationIcon from "@mui/icons-material/Celebration";
@@ -349,6 +350,76 @@ function Events() {
               onClick={() =>
                 window.open(
                   "https://www.google.com/maps/place/The+Warrington/@40.2683806,-75.1281754,17z/data=!3m2!4b1!5s0x89c6a8f3dce9eea3:0xf44a9967886d3977!4m5!3m4!1s0x89c6a8f08df21f5f:0xda963dae31f39ab9!8m2!3d40.2683806!4d-75.1259867",
+                  "_blank"
+                )
+              }
+            >
+              {textLang.viewMap} <OpenInNewIcon fontSize="x-small" />
+            </Button>
+          </Grid>
+          {/* FIFTH ROW */}
+          <Grid
+            item
+            container
+            xs={6}
+            justifyContent="center"
+            direction="column"
+            display="flex"
+          >
+            <Typography variant="h4" style={{ fontFamily: "Fairplay Display" }}>
+              {textLang.afterparty}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              {textLang.ceremonyDate}
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{
+                fontFamily: "Fairplay Display",
+                fontSize: isMobile ? "small" : "large",
+              }}
+            >
+              10:30 PM - 12:00 AM
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            container
+            xs={6}
+            justifyContent="center"
+            direction="column"
+            display="flex"
+          >
+            <SportsBarIcon style={{ margin: "auto", fontSize: "50" }} />
+            <Typography
+              variant={isMobile ? "body2" : "h6"}
+              style={{ fontFamily: "Fairplay Display", margin: "auto" }}
+              className="person-text"
+            >
+              Hampton Inn Doylestown
+              <br />
+              1570 Easton Rd
+              <br />
+              Warrington, PA 18976
+            </Typography>
+            <br />
+            <Button
+              variant="outlined"
+              style={{
+                width: "80%",
+                margin: "auto",
+                textTransform: "none",
+                fontSize: "small",
+              }}
+              onClick={() =>
+                window.open(
+                  "https://www.google.com/maps/place/Hampton+Inn+Doylestown/@40.2638077,-75.1346673,17z/data=!3m1!4b1!4m8!3m7!1s0x89c6a893205f0f59:0x1ce2d62122d87d43!5m2!4m1!1i2!8m2!3d40.2638077!4d-75.1324786",
                   "_blank"
                 )
               }
