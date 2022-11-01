@@ -219,7 +219,7 @@ const chineseTextParty = {
 
 const englishTextRSVP = {
   header: "We hope that you can make it!",
-  subheader: "Please enter your information below to RSVP:",
+  subheader: "Please enter your information below to RSVP",
   cannotAttend: "I cannot attend",
   guests: "# of Guests",
   email: "Email*",
@@ -240,7 +240,7 @@ const englishTextRSVP = {
 
 const chineseTextRSVP = {
   header: "我们真诚地希望您能前来参加婚礼！",
-  subheader: "请在下方输入您的信息：",
+  subheader: "请在下方输入您的信息",
   cannotAttend: "抱歉，我不能出席",
   guests: "参加人数",
   email: "Email*",

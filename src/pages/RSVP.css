@@ -1,7 +1,7 @@
 .rsvp-div {
     height: 100%;
     padding-top: 80px;
-    padding-bottom: 20px;
+    padding-bottom: 80px;
 }
 
 .rsvp-card {
@@ -34,7 +34,8 @@
 }
 
 .rsvp-box {
-    padding-top: 0 !important;
+    margin-top: 10px !important;
+    border: 1px solid black;
 }
 
 .failure-form {
