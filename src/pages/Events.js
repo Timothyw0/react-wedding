@@ -21,8 +21,6 @@ import CelebrationIcon from "@mui/icons-material/Celebration";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import back from "../assets/images/qa_back.jpeg";
-import manPhoto from "../assets/images/man.jpeg";
-import womanPhoto from "../assets/images/woman.jpeg";
 import "./Events.css";
 
 function Events() {

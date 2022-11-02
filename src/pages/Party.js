@@ -8,7 +8,6 @@ import {
 } from "../assets/data/translations";
 import back from "../assets/images/qa_back.jpeg";
 import divider from "../assets/images/divider.png";
-import manPhoto from "../assets/images/man.jpeg";
 import spencer from "../assets/images/party/spencer.jpg";
 import aidan from "../assets/images/party/aidan.jpg";
 import bridget from "../assets/images/party/bridget.jpeg";
@@ -24,7 +23,6 @@ import sarah from "../assets/images/party/sarah.jpg";
 import steff from "../assets/images/party/steff.jpg";
 import theresa from "../assets/images/party/theresa.jpeg";
 import tom from "../assets/images/party/tom.jpeg";
-import womanPhoto from "../assets/images/woman.jpeg";
 import "./Party.css";
 
 function Party() {

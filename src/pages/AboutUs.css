@@ -86,3 +86,7 @@
         font-size: medium;
     }
 }
+
+[data-testid="grid-gallery-item_thumbnail"] {
+    cursor: default !important;
+}
