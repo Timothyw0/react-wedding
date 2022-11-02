@@ -63,10 +63,6 @@ function RSVP() {
     setWidth(window.innerWidth);
   }
 
-  const handleStep = (step) => {
-    setActiveStep(step);
-  };
-
   const totalSteps = () => {
     return steps.length;
   };
@@ -99,7 +95,7 @@ function RSVP() {
   useEffect(() => {
     let copySteps = [...steps];
     if (numGuests === 0) {
-      copySteps = ["Attendance Info"];
+      copySteps = [textLang.attendanceInfo];
     } else {
       for (let i = 0; i < numGuests; i++) {
         copySteps.push(`${textLang.guestPrefix} ${i + 1}`);
@@ -365,6 +361,9 @@ function RSVP() {
   const reviewForm = rsvpState && (
     <>
       <Grid container>
+        <Grid item xs={12} style={{ paddingBottom: 0, marginTop: "5px" }}>
+          <h4>{textLang.rsvpNote}</h4>
+        </Grid>
         {rsvpState.map((elem, index) => {
           return (
             <>
@@ -488,7 +487,7 @@ function RSVP() {
                           <>{textLang.rsvpButton}</>
                         ) : (
                           <>
-                            Next
+                            {textLang.nextButton}
                             <KeyboardArrowRight />
                           </>
                         )}
@@ -501,7 +500,7 @@ function RSVP() {
                         disabled={activeStep === 0}
                       >
                         {<KeyboardArrowLeft />}
-                        Back
+                        {textLang.backButton}
                       </Button>
                     }
                   />

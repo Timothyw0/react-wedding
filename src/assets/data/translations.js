@@ -236,9 +236,13 @@ const englishTextRSVP = {
   thanksRSVP: "Thank you for RSVP'ing!",
   checkFieldMessage: "Please fill out all required fields!",
   rsvpButton: "RSVP!",
+  backButton: "Back",
+  nextButton: "Next",
   guestPrefix: "Guest",
   attendanceInfo: "Attendance Info",
   review: "Review",
+  rsvpNote:
+    "Note: You will not be able to change your RSVP after submission. If anything changes, please contact us!",
 };
 
 const chineseTextRSVP = {
@@ -260,9 +264,13 @@ const chineseTextRSVP = {
   thanksRSVP: "感谢您的回复！",
   checkFieldMessage: "请填写所有必要的信息。",
   rsvpButton: "提交注册!",
-  guestPrefix: "人",
-  attendanceInfo: "Attendance Info",
-  review: "Review",
+  backButton: "返回",
+  nextButton: "下一页",
+  guestPrefix: "宾客",
+  attendanceInfo: "宾客信息",
+  review: "确认",
+  rsvpNote:
+    "您的信息确认以后不能在该系统中更改。如果您需要更改其中的任何信息请联系我们。",
 };
 
 const englishTextEvents = {
