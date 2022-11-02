@@ -8,19 +8,15 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
+  Grid,
   InputLabel,
   Paper,
   Select,
   MenuItem,
   MobileStepper,
   Snackbar,
-  Stepper,
-  Step,
-  StepButton,
-  StepLabel,
   Typography,
   TextField,
-  Divider,
 } from "@material-ui/core";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
@@ -46,7 +42,6 @@ function RSVP() {
   const [cannotAttendEmail, setCannotAttendEmail] = useState("");
   const [cannotAttendFirstname, setCannotAttendFirstname] = useState("");
   const [cannotAttendLastname, setCannotAttendLastname] = useState("");
-  const [steps, setSteps] = useState(["Attendance Info"]);
   const [activeStep, setActiveStep] = useState(0);
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
@@ -61,6 +56,8 @@ function RSVP() {
   let textLang;
   if (language === "En") textLang = englishTextRSVP;
   else if (language === "Zh") textLang = chineseTextRSVP;
+
+  const [steps, setSteps] = useState([textLang.attendanceInfo]);
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
@@ -79,8 +76,11 @@ function RSVP() {
   };
 
   const handleNext = () => {
-    const newActiveStep = isLastStep() ? activeStep : activeStep + 1;
-    setActiveStep(newActiveStep);
+    if (isLastStep()) {
+      submitRSVP();
+    } else {
+      setActiveStep(activeStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -96,37 +96,34 @@ function RSVP() {
 
   const isMobile = width <= 768;
 
-  // Hook for when numGuests changes to add to RSVPState
-  // useEffect(() => {
-  //   let copyRSVP = [...rsvpState];
-  //   if (numGuests > rsvpState.length) {
-  //     for (let i = 0; i < numGuests - rsvpState.length; i++) {
-  //       copyRSVP.push({
-  //         firstName: undefined,
-  //         lastName: undefined,
-  //         email: undefined,
-  //         dietary: undefined,
-  //         food: undefined,
-  //       });
-  //     }
-  //   } else if (numGuests === 0) {
-  //     copyRSVP = [];
-  //   } else {
-  //     copyRSVP = copyRSVP.slice(0, numGuests);
-  //   }
-  //   setRSVPState(copyRSVP);
-  // }, [numGuests]);
   useEffect(() => {
     let copySteps = [...steps];
     if (numGuests === 0) {
       copySteps = ["Attendance Info"];
     } else {
       for (let i = 0; i < numGuests; i++) {
-        copySteps.push(`Guest ${i + 1}`);
+        copySteps.push(`${textLang.guestPrefix} ${i + 1}`);
       }
-      copySteps.push("Review");
+      copySteps.push(textLang.review);
     }
     setSteps(copySteps);
+    let copyRSVP = [...rsvpState];
+    if (numGuests > rsvpState.length) {
+      for (let i = 0; i < numGuests - rsvpState.length; i++) {
+        copyRSVP.push({
+          firstName: "",
+          lastName: "",
+          email: "",
+          dietary: "",
+          food: "",
+        });
+      }
+    } else if (numGuests === 0) {
+      copyRSVP = [];
+    } else {
+      copyRSVP = copyRSVP.slice(0, numGuests);
+    }
+    setRSVPState(copyRSVP);
   }, [numGuests]);
 
   const handleClose = () => {
@@ -138,7 +135,7 @@ function RSVP() {
   };
 
   const submitRSVP = async (event) => {
-    event.preventDefault();
+    if (event) event.preventDefault();
     let error = false;
     const rsvpCol = collection(db, "wedding-dev");
     const rsvps = await getDocs(rsvpCol);
@@ -227,88 +224,6 @@ function RSVP() {
     setRSVPState(copyRSVP);
   };
 
-  useEffect(() => {
-    if (rsvpState.length === 0) {
-      setRSVPInfo([]);
-      return;
-    }
-    let infoArr = [];
-    for (let i = 0; i < numGuests; i++) {
-      infoArr.push(
-        <>
-          <TextField
-            id="firstname-field"
-            variant="standard"
-            label={textLang.firstname}
-            className="rsvp-text"
-            value={rsvpState[i].firstName}
-            onChange={(event) => setInfo(event.target.value, "firstName", i)}
-          />
-          <br />
-          <TextField
-            id="lastname-field"
-            variant="standard"
-            label={textLang.lastname}
-            className="rsvp-text"
-            value={rsvpState[i].lastName}
-            onChange={(event) => setInfo(event.target.value, "lastName", i)}
-          />
-          <br />
-          {i === 0 && (
-            <>
-              <TextField
-                id="email-field"
-                variant="standard"
-                label={textLang.email}
-                className="rsvp-text"
-                type="email"
-                value={rsvpState[0].email}
-                onChange={(event) => setInfo(event.target.value, "email", 0)}
-              />
-              <br />
-            </>
-          )}
-          <TextField
-            id="dietary-field"
-            variant="standard"
-            label={textLang.dietary}
-            className="rsvp-text"
-            type="text"
-            value={rsvpState[i].dietary}
-            onChange={(event) => setInfo(event.target.value, "dietary", i)}
-          />
-          <br />
-          <FormControl style={{ width: "166px", paddingTop: "0px" }}>
-            <InputLabel id="demo-simple-select-label">
-              {textLang.food}
-            </InputLabel>
-            <Select
-              value={rsvpState[i].food}
-              MenuProps={{ disableScrollLock: true }}
-              label={textLang.food}
-              onChange={(event) => setInfo(event.target.value, "food", i)}
-            >
-              <MenuItem value={"chicken"}>{textLang.foodChoices[0]}</MenuItem>
-              <MenuItem value={"beef"}>{textLang.foodChoices[1]}</MenuItem>
-              <MenuItem value={"milk"}>{textLang.foodChoices[2]}</MenuItem>
-            </Select>
-          </FormControl>
-          <br />
-          <br />
-          {i !== rsvpState.length - 1 ? (
-            <>
-              <hr style={{ width: "50%", margin: "auto" }} />
-              <br />
-            </>
-          ) : (
-            <></>
-          )}
-        </>
-      );
-    }
-    setRSVPInfo(infoArr);
-  }, [rsvpState.length]);
-
   const attendanceInfo = (
     <>
       <TextField
@@ -379,33 +294,131 @@ function RSVP() {
         }}
       />
       {cannotAttend && <br />}
-      {cannotAttend && (
-        <Button
-          type="submit"
-          variant="outlined"
-          color="primary"
-          disabled={
-            (numGuests === 0 && !cannotAttend) ||
-            (cannotAttend &&
-              !cannotAttendEmail &&
-              !cannotAttendFirstname &&
-              !cannotAttendLastname)
-          }
-          className={fail ? "failure-form" : ""}
-          style={{
-            textDecoration: "underline",
-            border: "2px solid",
-            marginBottom: "20px",
-          }}
-          onClick={submitRSVP}
-        >
-          {textLang.rsvpButton}
-        </Button>
-      )}
     </>
   );
 
-  const stepMappings = { 0: attendanceInfo };
+  const guestForm = (index) => {
+    if (!rsvpState[index]) return;
+    return (
+      <>
+        <TextField
+          id="firstname-field"
+          variant="standard"
+          label={textLang.firstname}
+          className="rsvp-text"
+          value={rsvpState[index].firstName}
+          onChange={(event) => setInfo(event.target.value, "firstName", index)}
+        />
+        <br />
+        <TextField
+          id="lastname-field"
+          variant="standard"
+          label={textLang.lastname}
+          className="rsvp-text"
+          value={rsvpState[index].lastName}
+          onChange={(event) => setInfo(event.target.value, "lastName", index)}
+        />
+        <br />
+        {index === 0 && (
+          <>
+            <TextField
+              id="email-field"
+              variant="standard"
+              label={textLang.email}
+              className="rsvp-text"
+              type="email"
+              value={rsvpState[0].email}
+              onChange={(event) => setInfo(event.target.value, "email", 0)}
+            />
+            <br />
+          </>
+        )}
+        <TextField
+          id="dietary-field"
+          variant="standard"
+          label={textLang.dietary}
+          className="rsvp-text"
+          type="text"
+          value={rsvpState[index].dietary}
+          onChange={(event) => setInfo(event.target.value, "dietary", index)}
+        />
+        <br />
+        <FormControl style={{ width: "166px", paddingTop: "0px" }}>
+          <InputLabel id="demo-simple-select-label">{textLang.food}</InputLabel>
+          <Select
+            value={rsvpState[index].food}
+            MenuProps={{ disableScrollLock: true }}
+            label={textLang.food}
+            onChange={(event) => setInfo(event.target.value, "food", index)}
+          >
+            <MenuItem value={"chicken"}>{textLang.foodChoices[0]}</MenuItem>
+            <MenuItem value={"beef"}>{textLang.foodChoices[1]}</MenuItem>
+            <MenuItem value={"milk"}>{textLang.foodChoices[2]}</MenuItem>
+          </Select>
+        </FormControl>
+        <br />
+        <br />
+      </>
+    );
+  };
+
+  const reviewForm = rsvpState && (
+    <>
+      <Grid container>
+        {rsvpState.map((elem, index) => {
+          return (
+            <>
+              <Grid item xs={12} style={{ paddingBottom: 0, marginTop: "5px" }}>
+                <h4>
+                  {textLang.guestPrefix} {index + 1}
+                </h4>
+              </Grid>
+              <Grid item xs={5} className="review-item review-title">
+                {textLang.firstname}:
+              </Grid>
+              <Grid item xs={7} className="review-item">
+                {elem?.firstName}
+              </Grid>
+              <Grid item xs={5} className="review-item review-title">
+                {textLang.lastname}:
+              </Grid>
+              <Grid item xs={7} className="review-item">
+                {elem?.lastName}
+              </Grid>
+              {index === 0 && (
+                <>
+                  <Grid item xs={5} className="review-item review-title">
+                    Email:
+                  </Grid>
+                  <Grid item xs={7} className="review-item">
+                    {elem?.email}
+                  </Grid>
+                </>
+              )}
+              <Grid item xs={5} className="review-item review-title">
+                {textLang.dietary}:
+              </Grid>
+              <Grid item xs={7} className="review-item">
+                {elem?.dietary}
+              </Grid>
+              <Grid item xs={5} className="review-item review-title">
+                {textLang.food}:
+              </Grid>
+              <Grid item xs={7} className="review-item">
+                {elem?.food}
+              </Grid>
+            </>
+          );
+        })}
+      </Grid>
+    </>
+  );
+
+  const stepMappings = (index) => {
+    if (index === 0) return attendanceInfo;
+    else if (index === steps.length - 1) return reviewForm;
+    else return guestForm(index - 1);
+  };
 
   return (
     <div className="rsvp-div">
@@ -459,7 +472,7 @@ function RSVP() {
                       {steps[activeStep]}
                     </Typography>
                   </Paper>
-                  {stepMappings[activeStep]}
+                  {stepMappings(activeStep)}
                   <MobileStepper
                     variant="text"
                     steps={steps.length}
@@ -469,10 +482,16 @@ function RSVP() {
                       <Button
                         size="small"
                         onClick={handleNext}
-                        disabled={activeStep === steps.length - 1}
+                        disabled={!numGuests && !cannotAttend}
                       >
-                        Next
-                        {<KeyboardArrowRight />}
+                        {activeStep === steps.length - 1 ? (
+                          <>{textLang.rsvpButton}</>
+                        ) : (
+                          <>
+                            Next
+                            <KeyboardArrowRight />
+                          </>
+                        )}
                       </Button>
                     }
                     backButton={
@@ -487,101 +506,6 @@ function RSVP() {
                     }
                   />
                 </>
-                //   <form onSubmit={submitRSVP} className="rsvp-form">
-                //     <TextField
-                //       id="guests-field"
-                //       autoFocus
-                //       variant="standard"
-                //       label={textLang.guests}
-                //       className="rsvp-text"
-                //       type="number"
-                //       hidden={cannotAttend}
-                //       value={
-                //         Number(numGuests).toString() === "0"
-                //           ? ""
-                //           : Number(numGuests).toString()
-                //       }
-                //       onChange={(event) => {
-                //         event.target.value < 0
-                //           ? (event.target.value = 0)
-                //           : setNumGuests(Math.min(event.target.value, 8));
-                //         setCannotAttend(false);
-                //       }}
-                //     />
-                //     <FormGroup className="rsvp-text">
-                //       <FormControlLabel
-                //         control={<Checkbox checked={cannotAttend} />}
-                //         label={textLang.cannotAttend}
-                //         style={{ margin: "auto" }}
-                //         hidden={numGuests > 0}
-                //         onChange={() => {
-                //           setCannotAttend(!cannotAttend);
-                //           setNumGuests(0);
-                //         }}
-                //       />
-                //     </FormGroup>
-                //     <TextField
-                //       id="cannot-email-field"
-                //       variant="standard"
-                //       label="Email*"
-                //       className="rsvp-text"
-                //       type="email"
-                //       value={cannotAttendEmail}
-                //       hidden={!cannotAttend}
-                //       onChange={(event) =>
-                //         setCannotAttendEmail(event.target.value)
-                //       }
-                //     />
-                //     {cannotAttend && <br />}
-                //     <TextField
-                //       id="cannot-name-field"
-                //       variant="standard"
-                //       label={textLang.firstname}
-                //       className="rsvp-text"
-                //       type="text"
-                //       value={cannotAttendFirstname}
-                //       hidden={!cannotAttend}
-                //       onChange={(event) =>
-                //         setCannotAttendFirstname(event.target.value)
-                //       }
-                //     />
-                //     {cannotAttend && <br />}
-                //     <TextField
-                //       id="cannot-name-field"
-                //       variant="standard"
-                //       label={textLang.lastname}
-                //       className="rsvp-text"
-                //       type="text"
-                //       value={cannotAttendLastname}
-                //       hidden={!cannotAttend}
-                //       onChange={(event) =>
-                //         setCannotAttendLastname(event.target.value)
-                //       }
-                //     />
-                //     {cannotAttend && <br />}
-                //     {rsvpInfo}
-                //     <br />
-                //     <Button
-                //       type="submit"
-                //       variant="outlined"
-                //       color="primary"
-                //       disabled={
-                //         (numGuests === 0 && !cannotAttend) ||
-                //         (cannotAttend &&
-                //           !cannotAttendEmail &&
-                //           !cannotAttendFirstname &&
-                //           !cannotAttendLastname)
-                //       }
-                //       className={fail ? "failure-form" : ""}
-                //       style={{
-                //         textDecoration: "underline",
-                //         border: "2px solid",
-                //       }}
-                //     >
-                //       {textLang.rsvpButton}
-                //     </Button>
-                //   </form>
-                // </>
               )}
             </Box>
           </div>

@@ -45,3 +45,14 @@
 .rsvp-form {
     padding-top: 5px;
 }
+
+.review-item {
+    padding-bottom: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: left;
+}
+
+.review-title {
+    font-weight: bold;
+}

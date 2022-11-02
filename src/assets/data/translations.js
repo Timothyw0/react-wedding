@@ -236,6 +236,9 @@ const englishTextRSVP = {
   thanksRSVP: "Thank you for RSVP'ing!",
   checkFieldMessage: "Please fill out all required fields!",
   rsvpButton: "RSVP!",
+  guestPrefix: "Guest",
+  attendanceInfo: "Attendance Info",
+  review: "Review",
 };
 
 const chineseTextRSVP = {
@@ -257,6 +260,9 @@ const chineseTextRSVP = {
   thanksRSVP: "感谢您的回复！",
   checkFieldMessage: "请填写所有必要的信息。",
   rsvpButton: "提交注册!",
+  guestPrefix: "人",
+  attendanceInfo: "Attendance Info",
+  review: "Review",
 };
 
 const englishTextEvents = {
