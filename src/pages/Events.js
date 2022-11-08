@@ -65,7 +65,7 @@ function Events() {
           style={{ width: "90%", margin: "auto" }}
         >
           {/* FIRST ROW */}
-          <Grid
+          {/* <Grid
             item
             container
             xs={6}
@@ -95,7 +95,7 @@ function Events() {
             >
               6:00 PM
             </Typography>
-          </Grid>
+          </Grid> 
           <Grid
             item
             container
@@ -132,7 +132,7 @@ function Events() {
             >
               {textLang.viewMap} <OpenInNewIcon fontSize="x-small" />
             </Button>
-          </Grid>
+            </Grid> */}
           {/* SECOND ROW */}
           <Grid
             item
@@ -216,7 +216,7 @@ function Events() {
             </Button>
           </Grid>
           {/* THIRD ROW */}
-          <Grid
+          {/* <Grid
             item
             container
             xs={6}
@@ -284,7 +284,7 @@ function Events() {
             >
               {textLang.viewMap} <OpenInNewIcon fontSize="x-small" />
             </Button>
-          </Grid>
+          </Grid> */}
           {/* FOURTH ROW */}
           <Grid
             item
