@@ -158,26 +158,11 @@ function App() {
             <Route path="/party" element={<Party />} />
             <Route path="/events" element={<Events />} />
             <Route path="/accommodations" element={<Travel />} />
-            <Route path="/rsvp" element={<RSVP />} />
+            {/* <Route path="/rsvp" element={<RSVP />} /> */}
             <Route path="/registry" element={<Registry />} />
             <Route path="/questions" element={<Questions />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          {/*<section id="about">
-          <AboutUs />
-        </section>
-        <section id="party">
-          <Party />
-        </section>
-        <section id="events">
-          <Events />
-        </section>
-        <section id="rsvp">
-          <RSVP />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>*/}
           <Speeddial />
         </div>
       </ThemeProvider>
