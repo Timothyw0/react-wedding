@@ -34,7 +34,7 @@ const Questions = () => {
 
   let pageContent = textLang.questions.map((elem, idx) => {
     let answerText;
-    if (elem.includes("dietary") || elem.includes("食物")) {
+    if (elem.includes("dietary") && elem.includes("食物")) {
       answerText = (
         <>
           <p>
