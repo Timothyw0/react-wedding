@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "wedding-919cf"
-  }
+    "default": "wedding-919cf",
+    "staging": "wedding-qa"
+  },
+  "targets": {},
+  "etags": {}
 }

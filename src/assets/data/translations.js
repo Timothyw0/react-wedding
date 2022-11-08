@@ -160,7 +160,7 @@ const englishTextQA = {
   ],
   answers: [
     "The dress code for our wedding is semi-formal/cocktail attire",
-    "There is complimentary parking on-site, Ubers/Lyfts are available, and the Hampton Inn is only a 3 minute drive away",
+    "There is complimentary parking on-site and the Hampton Inn is less than a 3 minute drive away if you are using Uber/Lyft",
     "Please include any dietary restrictions in the RSVP",
     "We have reserved rooms at the Hampton Inn Doylestown nearby, you can check out their website",
     "You can text Madeleine at (845)-820-3221 or Tim at (732)-939-3051",
