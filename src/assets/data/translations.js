@@ -297,7 +297,7 @@ const chineseTextEvents = {
   ceremonyArrive: "请提前15分钟到达",
   cocktail: "鸡尾酒会",
   reception: "婚宴",
-  afterparty: "派对后",
+  afterparty: "后派对",
   viewMap: "地图 ",
 };
 
