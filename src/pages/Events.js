@@ -442,7 +442,7 @@ function Events() {
       {isMobile ? (
         eventInfo
       ) : (
-        <Box sx={{ width: "80%", margin: "auto" }} className="rsvp-box">
+        <Box sx={{ width: "80%", margin: "auto" }} className="event-box">
           <Card
             className="rsvp-card"
             variant="outlined"

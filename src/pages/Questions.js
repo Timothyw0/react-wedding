@@ -81,7 +81,7 @@ const Questions = () => {
         {isMobile ? (
           pageContent
         ) : (
-          <Box sx={{ width: "80%", margin: "auto" }} className="rsvp-box">
+          <Box sx={{ width: "80%", margin: "auto" }} className="questions-box">
             <Card className="rsvp-card" variant="outlined">
               {pageContent}
             </Card>

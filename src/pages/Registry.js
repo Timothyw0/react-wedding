@@ -57,7 +57,7 @@ const Registry = () => {
       {isMobile ? (
         textContent
       ) : (
-        <Box sx={{ width: "80%", margin: "auto" }} className="rsvp-box">
+        <Box sx={{ width: "80%", margin: "auto" }} className="registry-box">
           <Card
             className="rsvp-card"
             variant="outlined"

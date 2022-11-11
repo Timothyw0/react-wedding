@@ -266,7 +266,7 @@ function Party() {
       {isMobile ? (
         partyInfo
       ) : (
-        <Box sx={{ width: "70%", margin: "auto" }} className="rsvp-box">
+        <Box sx={{ width: "70%", margin: "auto" }} className="party-box">
           <Card
             className="rsvp-card"
             variant="outlined"
