@@ -190,7 +190,7 @@ function Events() {
               style={{ fontFamily: "Fairplay Display", margin: "auto" }}
               className="person-text"
             >
-              The Warrington Country Club
+              The Warrington
               <br />
               1360 Almshouse Rd #1207
               <br />
@@ -260,7 +260,7 @@ function Events() {
               style={{ fontFamily: "Fairplay Display", margin: "auto" }}
               className="person-text"
             >
-              The Warrington Country Club
+              The Warrington
               <br />
               1360 Almshouse Rd #1207
               <br />
@@ -330,7 +330,7 @@ function Events() {
               style={{ fontFamily: "Fairplay Display", margin: "auto" }}
               className="person-text"
             >
-              The Warrington Country Club
+              The Warrington
               <br />
               1360 Almshouse Rd #1207
               <br />
