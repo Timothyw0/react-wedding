@@ -27,6 +27,23 @@ import {
   gallery15,
   gallery16,
   gallery17,
+  gallery18,
+  gallery19,
+  gallery20,
+  gallery21,
+  gallery22,
+  gallery23,
+  gallery24,
+  gallery25,
+  gallery26,
+  gallery27,
+  gallery28,
+  gallery29,
+  gallery30,
+  gallery31,
+  gallery32,
+  gallery33,
+  gallery34,
 } from "../assets/images/gallery";
 import "./AboutUs.css";
 
@@ -37,9 +54,14 @@ function AboutUs() {
   const orientation = {
     wide: { height: 3, width: 4 },
     tall: { height: 4, width: 3 },
+    ultrawide: { height: 3, width: 5 },
   };
   const wides = new Set([7, 8, 13, 15]);
-  const order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+  const ultraWides = new Set([28, 29, 32]);
+  const order = [
+    1, 2, 23, 4, 30, 6, 7, 8, 9, 26, 11, 12, 32, 14, 19, 16, 17, 21, 15, 20, 18,
+    22, 3, 24, 25, 10, 27, 28, 29, 5, 31, 13, 33, 34,
+  ];
   const picMapping = {
     1: gallery1,
     2: gallery2,
@@ -58,6 +80,23 @@ function AboutUs() {
     15: gallery15,
     16: gallery16,
     17: gallery17,
+    18: gallery18,
+    19: gallery19,
+    20: gallery20,
+    21: gallery21,
+    22: gallery22,
+    23: gallery23,
+    24: gallery24,
+    25: gallery25,
+    26: gallery26,
+    27: gallery27,
+    28: gallery28,
+    29: gallery29,
+    30: gallery30,
+    31: gallery31,
+    32: gallery32,
+    33: gallery33,
+    34: gallery34,
   };
 
   const images = order.map((pic) => {
@@ -65,8 +104,14 @@ function AboutUs() {
       src: picMapping[pic],
       height: wides.has(pic)
         ? orientation.wide.height
+        : ultraWides.has(pic)
+        ? orientation.ultrawide.height
         : orientation.tall.height,
-      width: wides.has(pic) ? orientation.wide.width : orientation.tall.width,
+      width: wides.has(pic)
+        ? orientation.wide.width
+        : ultraWides.has(pic)
+        ? orientation.ultrawide.width
+        : orientation.tall.width,
     };
   });
 

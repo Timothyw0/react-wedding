@@ -8,6 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 First version released with hidden RSVP functionality for Save the Date info. 
 RSVP testing website is live at https://wedding-qa.web.app
 
+## 1.1 11/14/2023
+Added additional photos into the gallery on the About Us page.
+
 ## Welcome! 
 
 This is my personal project to create my own wedding website using ReactJS as a Single Page Application (SPA).
