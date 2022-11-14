@@ -34,7 +34,6 @@ import {
   gallery22,
   gallery23,
   gallery24,
-  gallery25,
   gallery26,
   gallery27,
   gallery28,
@@ -60,7 +59,7 @@ function AboutUs() {
   const ultraWides = new Set([28, 29, 32]);
   const order = [
     1, 2, 23, 4, 30, 6, 7, 8, 9, 26, 11, 12, 32, 14, 19, 16, 17, 21, 15, 20, 18,
-    22, 3, 24, 25, 10, 27, 28, 29, 5, 31, 13, 33, 34,
+    22, 3, 24, 10, 27, 28, 29, 5, 31, 13, 33, 34,
   ];
   const picMapping = {
     1: gallery1,
@@ -87,7 +86,6 @@ function AboutUs() {
     22: gallery22,
     23: gallery23,
     24: gallery24,
-    25: gallery25,
     26: gallery26,
     27: gallery27,
     28: gallery28,

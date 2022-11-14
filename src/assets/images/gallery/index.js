@@ -22,7 +22,6 @@ export const gallery21 = require("./gallery21.jpg");
 export const gallery22 = require("./gallery22.jpg");
 export const gallery23 = require("./gallery23.jpg");
 export const gallery24 = require("./gallery24.jpg");
-export const gallery25 = require("./gallery25.jpg");
 export const gallery26 = require("./gallery26.jpg");
 export const gallery27 = require("./gallery27.jpg");
 export const gallery28 = require("./gallery28.jpg");
