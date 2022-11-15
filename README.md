@@ -11,6 +11,9 @@ RSVP testing website is live at https://wedding-qa.web.app
 ## 1.1 11/14/2023
 Added additional photos into the gallery on the About Us page.
 
+## 1.2 11/15/2023
+Update hotel link for Saturday-Sunday stays only
+
 ## Welcome! 
 
 This is my personal project to create my own wedding website using ReactJS as a Single Page Application (SPA).
