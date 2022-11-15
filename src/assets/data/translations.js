@@ -109,7 +109,7 @@ const englishTextTravel = {
   venue: "Wedding Venue",
   hotel: "Hampton Inn",
   hotelURL:
-    " https://www.hilton.com/en/book/reservation/deeplink/?ctyhocn=DYLPAHX&groupCode=CHHHWW&arrivaldate=2023-09-22&departuredate=2023-09-24&cid=OM,WW,HILTONLINK,EN,DirectLink&fromId=HILTONLINKDIRECT",
+    " https://www.hilton.com/en/book/reservation/deeplink/?ctyhocn=DYLPAHX&groupCode=CHHHWW&arrivaldate=2023-09-23&departuredate=2023-09-24&cid=OM,WW,HILTONLINK,EN,DirectLink&fromId=HILTONLINKDIRECT",
   hotelText: "Hotel Website",
 };
 
