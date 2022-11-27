@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState, Suspense } from "react";
 import {
   Avatar,
   Button,
@@ -21,18 +21,18 @@ import {
 import actions from "./actions/languageAction";
 import Zhong from "./assets/images/zhong.png";
 import English from "./assets/images/english.png";
-import Topbar from "./components/Topbar";
-import AboutUs from "./pages/AboutUs";
-import Events from "./pages/Events";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import Party from "./pages/Party";
-import Questions from "./pages/Questions";
-import Registry from "./pages/Registry";
-import RSVP from "./pages/RSVP";
-import Speeddial from "./components/Speeddial";
-import Travel from "./pages/Travel";
 import "./App.css";
+const Topbar = lazy(() => import("./components/Topbar"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Events = lazy(() => import("./pages/Events"));
+const Home = lazy(() => import("./pages/Home"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Party = lazy(() => import("./pages/Party"));
+const Questions = lazy(() => import("./pages/Questions"));
+const Registry = lazy(() => import("./pages/Registry"));
+const RSVP = lazy(() => import("./pages/RSVP"));
+const Speeddial = lazy(() => import("./components/Speeddial"));
+const Travel = lazy(() => import("./pages/Travel"));
 const sha512 = require("js-sha512").sha512;
 
 const useStyles = makeStyles((theme) => ({
@@ -105,67 +105,69 @@ function App() {
 
   return (
     <Router>
-      <ThemeProvider theme={theme}>
-        <div className="App">
-          <Topbar />
-          <Dialog
-            open={showModal}
-            BackdropProps={{ classes: { root: classes.backDrop } }}
-            onClose={() => {}}
-          >
-            <DialogContent style={{ textAlign: "center" }}>
-              <IconButton
-                className="zhongwen-button"
-                size="small"
-                onClick={changeLang}
-              >
-                <Avatar src={language === "En" ? Zhong : English} />
-              </IconButton>
-              <Typography variant="h3" className="pass-modal">
-                {textLang.welcome}
-              </Typography>
-              <Typography variant="h4" className="pass-modal">
-                {textLang.pass}
-              </Typography>
-              <Typography
-                variant="h6"
-                className={classes.errorText}
-                hidden={!showError}
-              >
-                {textLang.incorrect}
-              </Typography>
-              <form onSubmit={checkPass}>
-                <TextField
-                  id="password-field"
-                  variant="standard"
-                  placeholder="Password"
-                  className="pass-modal"
-                  value={pass}
-                  onChange={handleChange}
-                  type="password"
-                  autoFocus
-                />
-                <Button type="submit" disabled={pass.length <= 0}>
-                  {textLang.enter}
-                </Button>
-              </form>
-            </DialogContent>
-          </Dialog>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ThemeProvider theme={theme}>
+          <div className="App">
+            <Topbar />
+            <Dialog
+              open={showModal}
+              BackdropProps={{ classes: { root: classes.backDrop } }}
+              onClose={() => {}}
+            >
+              <DialogContent style={{ textAlign: "center" }}>
+                <IconButton
+                  className="zhongwen-button"
+                  size="small"
+                  onClick={changeLang}
+                >
+                  <Avatar src={language === "En" ? Zhong : English} />
+                </IconButton>
+                <Typography variant="h3" className="pass-modal">
+                  {textLang.welcome}
+                </Typography>
+                <Typography variant="h4" className="pass-modal">
+                  {textLang.pass}
+                </Typography>
+                <Typography
+                  variant="h6"
+                  className={classes.errorText}
+                  hidden={!showError}
+                >
+                  {textLang.incorrect}
+                </Typography>
+                <form onSubmit={checkPass}>
+                  <TextField
+                    id="password-field"
+                    variant="standard"
+                    placeholder="Password"
+                    className="pass-modal"
+                    value={pass}
+                    onChange={handleChange}
+                    type="password"
+                    autoFocus
+                  />
+                  <Button type="submit" disabled={pass.length <= 0}>
+                    {textLang.enter}
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
 
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/story" element={<AboutUs />} />
-            <Route path="/party" element={<Party />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/accommodations" element={<Travel />} />
-            {/* <Route path="/rsvp" element={<RSVP />} /> */}
-            <Route path="/registry" element={<Registry />} />
-            <Route path="/questions" element={<Questions />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Speeddial />
-        </div>
-      </ThemeProvider>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/story" element={<AboutUs />} />
+              <Route path="/party" element={<Party />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/accommodations" element={<Travel />} />
+              {/* <Route path="/rsvp" element={<RSVP />} /> */}
+              <Route path="/registry" element={<Registry />} />
+              <Route path="/questions" element={<Questions />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Speeddial />
+          </div>
+        </ThemeProvider>
+      </Suspense>
     </Router>
   );
 }

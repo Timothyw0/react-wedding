@@ -70,7 +70,7 @@ const Home = () => {
                 display: "flex",
               }}
             >
-              <p style={{ fontSize: "30px" }}>
+              <p style={{ fontSize: "30px", margin: "auto", width: "90%" }}>
                 {daysTill || ""}
                 <br />
                 {daysTill === 1 ? textLang.day : textLang.days}!
