@@ -14,6 +14,9 @@ Added additional photos into the gallery on the About Us page.
 ## 1.2 11/15/2023
 Update hotel link for Saturday-Sunday stays only
 
+## 1.3 11/27/2023
+Add lazy loading to increase performance
+
 ## Welcome! 
 
 This is my personal project to create my own wedding website using ReactJS as a Single Page Application (SPA).
