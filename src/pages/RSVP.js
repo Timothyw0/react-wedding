@@ -24,7 +24,7 @@ import { englishTextRSVP, chineseTextRSVP } from "../assets/data/translations";
 import { useSelector } from "react-redux";
 import MuiAlert from "@mui/material/Alert";
 import React, { useEffect, useState } from "react";
-import rsvpPhoto from "../assets/images/rsvp.jpg";
+import rsvpPhoto from "../assets/images/RSVP.jpg";
 import db from "../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore/lite";
 import "./RSVP.css";
