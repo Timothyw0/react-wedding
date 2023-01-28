@@ -3,11 +3,10 @@ import Divider from "@material-ui/core/Divider";
 import divider from "../assets/images/divider.png";
 import manPhoto from "../assets/images/man_copy.png";
 import womanPhoto from "../assets/images/woman.jpeg";
+import {memo} from "react"
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import "./Contact.css";
-
-const images = [{ url: manPhoto }, { url: womanPhoto }];
 
 function Contact() {
   return (
@@ -117,4 +116,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default memo(Contact);

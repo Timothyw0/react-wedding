@@ -1,14 +1,14 @@
 import { Grid, Typography, Card, CardContent } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import React, { useState, useEffect } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { Gallery } from "react-grid-gallery";
 import {
   englishTextStory,
   chineseTextStory,
-} from "../assets/data/translations";
-import divider from "../assets/images/divider.png";
-import us1 from "../assets/images/us.jpg";
-import backPhoto from "../assets/images/travel_back.png";
+} from "../../assets/data/translations";
+import divider from "../../assets/images/divider.png";
+import us1 from "../../assets/images/us.jpg";
+import backPhoto from "../../assets/images/travel_back.png";
 import {
   gallery1,
   gallery2,
@@ -43,7 +43,7 @@ import {
   gallery32,
   gallery33,
   gallery34,
-} from "../assets/images/gallery";
+} from "../../assets/images/gallery";
 import "./AboutUs.css";
 
 function AboutUs() {
@@ -174,4 +174,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default memo(AboutUs);

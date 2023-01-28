@@ -20,12 +20,13 @@ import {
 } from "@material-ui/core";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { englishTextRSVP, chineseTextRSVP } from "../assets/data/translations";
+import { englishTextRSVP, chineseTextRSVP } from "../../assets/data/translations";
 import { useSelector } from "react-redux";
+import { memo } from "react";
 import MuiAlert from "@mui/material/Alert";
 import React, { useEffect, useState } from "react";
-import rsvpPhoto from "../assets/images/RSVP.jpg";
-import db from "../firebase";
+import rsvpPhoto from "../../assets/images/RSVP.jpg";
+import db from "../../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore/lite";
 import "./RSVP.css";
 
@@ -543,4 +544,4 @@ function RSVP() {
   );
 }
 
-export default RSVP;
+export default memo(RSVP);

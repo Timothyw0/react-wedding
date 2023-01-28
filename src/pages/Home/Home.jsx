@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Box, Card, CardContent, Grid, Typography } from "@material-ui/core";
-import { englishTextHome, chineseTextHome } from "../assets/data/translations";
+import { englishTextHome, chineseTextHome } from "../../assets/data/translations";
 import { useSelector } from "react-redux";
-import homePhoto from "../assets/images/home_back.jpg";
-import divider from "../assets/images/divider.png";
-import back from "../assets/images/qa_back.jpeg";
-import cardBack from "../assets/images/card_back.jpeg";
+import homePhoto from "../../assets/images/home_back.jpg";
+import divider from "../../assets/images/divider.png";
+import back from "../../assets/images/qa_back.jpeg";
+import cardBack from "../../assets/images/card_back.jpeg";
 
 const Home = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -120,4 +120,4 @@ const Home = () => {
   return isMobile ? mobileDisplay : wideDisplay;
 };
 
-export default Home;
+export default memo(Home);

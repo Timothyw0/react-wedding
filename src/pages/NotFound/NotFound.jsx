@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { useSelector } from "react-redux";
-import { englishText404, chineseText404 } from "../assets/data/translations";
-import back from "../assets/images/404_back.jpeg";
+import { englishText404, chineseText404 } from "../../assets/data/translations";
+import back from "../../assets/images/404_back.jpeg";
 
 const NotFound = () => {
   const language = useSelector((state) => state.language.language);
@@ -25,4 +25,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default memo(NotFound);

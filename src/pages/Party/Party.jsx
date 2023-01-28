@@ -1,28 +1,28 @@
 import { Grid, Typography } from "@material-ui/core";
 import { Box, Card, CardContent } from "@material-ui/core";
 import { useSelector } from "react-redux";
-import React, { useState, useEffect } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   englishTextParty,
   chineseTextParty,
-} from "../assets/data/translations";
-import back from "../assets/images/qa_back.jpeg";
-import divider from "../assets/images/divider.png";
-import spencer from "../assets/images/party/spencer.jpg";
-import aidan from "../assets/images/party/aidan.jpg";
-import bridget from "../assets/images/party/bridget.jpeg";
-import donny from "../assets/images/party/donny.jpeg";
-import emily from "../assets/images/party/emily.jpg";
-import jess from "../assets/images/party/jess.jpg";
-import kim from "../assets/images/party/kim.jpeg";
-import marian from "../assets/images/party/marian.jpeg";
-import marco from "../assets/images/party/marco.jpeg";
-import michele from "../assets/images/party/michele.jpeg";
-import pam from "../assets/images/party/pam.jpg";
-import sarah from "../assets/images/party/sarah.jpg";
-import steff from "../assets/images/party/steff.jpg";
-import theresa from "../assets/images/party/theresa.jpeg";
-import tom from "../assets/images/party/tom.jpeg";
+} from "../../assets/data/translations";
+import back from "../../assets/images/qa_back.jpeg";
+import divider from "../../assets/images/divider.png";
+import spencer from "../../assets/images/party/spencer.jpg";
+import aidan from "../../assets/images/party/aidan.jpg";
+import bridget from "../../assets/images/party/bridget.jpeg";
+import donny from "../../assets/images/party/donny.jpeg";
+import emily from "../../assets/images/party/emily.jpg";
+import jess from "../../assets/images/party/jess.jpg";
+import kim from "../../assets/images/party/kim.jpeg";
+import marian from "../../assets/images/party/marian.jpeg";
+import marco from "../../assets/images/party/marco.jpeg";
+import michele from "../../assets/images/party/michele.jpeg";
+import pam from "../../assets/images/party/pam.jpg";
+import sarah from "../../assets/images/party/sarah.jpg";
+import steff from "../../assets/images/party/steff.jpg";
+import theresa from "../../assets/images/party/theresa.jpeg";
+import tom from "../../assets/images/party/tom.jpeg";
 import "./Party.css";
 
 function Party() {
@@ -280,4 +280,4 @@ function Party() {
   );
 }
 
-export default Party;
+export default memo(Party);

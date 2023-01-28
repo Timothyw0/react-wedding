@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   englishTextRegistry,
   chineseTextRegistry,
-} from "../assets/data/translations";
+} from "../../assets/data/translations";
 import { Box, Card, CardContent } from "@material-ui/core";
-import back from "../assets/images/qa_back.jpeg";
+import back from "../../assets/images/qa_back.jpeg";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "./Registry.css";
 
@@ -71,4 +71,4 @@ const Registry = () => {
   );
 };
 
-export default Registry;
+export default memo(Registry);

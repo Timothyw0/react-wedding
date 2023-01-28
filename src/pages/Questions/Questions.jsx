@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   englishTextQA,
   chineseTextQA,
   englishTextTravel,
-} from "../assets/data/translations";
+} from "../../assets/data/translations";
 import { Box, Card } from "@material-ui/core";
-import back from "../assets/images/qa_back.jpeg";
+import back from "../../assets/images/qa_back.jpeg";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "./Questions.css";
 
@@ -92,4 +92,4 @@ const Questions = () => {
   );
 };
 
-export default Questions;
+export default memo(Questions);

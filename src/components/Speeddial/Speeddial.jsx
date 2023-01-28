@@ -1,7 +1,6 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
-import { englishTextDial, chineseTextDial } from "../assets/data/translations";
+import { englishTextDial, chineseTextDial } from "../../assets/data/translations";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
@@ -60,4 +59,4 @@ const Speeddial = () => {
   );
 };
 
-export default Speeddial;
+export default React.memo(Speeddial);

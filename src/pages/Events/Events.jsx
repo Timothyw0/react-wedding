@@ -1,26 +1,23 @@
 import {
   Grid,
   Button,
-  Divider,
   Typography,
   Box,
   Card,
   CardContent,
 } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   englishTextEvents,
   chineseTextEvents,
-} from "../assets/data/translations";
-import divider from "../assets/images/divider.png";
+} from "../../assets/data/translations";
+import divider from "../../assets/images/divider.png";
 import SportsBarIcon from "@mui/icons-material/SportsBar";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
 import FilterVintageIcon from "@mui/icons-material/FilterVintage";
 import CelebrationIcon from "@mui/icons-material/Celebration";
-import LocalBarIcon from "@mui/icons-material/LocalBar";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import back from "../assets/images/qa_back.jpeg";
+import back from "../../assets/images/qa_back.jpeg";
 import "./Events.css";
 
 function Events() {
@@ -456,4 +453,4 @@ function Events() {
   );
 }
 
-export default Events;
+export default memo(Events);

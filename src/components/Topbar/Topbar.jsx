@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import {
   AppBar,
   Box,
   Button,
   Container,
-  Grid,
   IconButton,
   Menu,
   MenuItem,
   Toolbar,
-  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useDispatch, useSelector } from "react-redux";
-import { englishTextNav, chineseTextNav } from "../assets/data/translations";
+import { englishTextNav, chineseTextNav } from "../../assets/data/translations";
 import { NavLink } from "react-router-dom";
-import actions from "../actions/languageAction";
+import actions from "../../actions/languageAction";
 import "./Topbar.css";
 
 function Topbar() {
@@ -155,4 +153,4 @@ function Topbar() {
   );
 }
 
-export default Topbar;
+export default memo(Topbar);

@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import {
   englishTextTravel,
   chineseTextTravel,
-} from "../assets/data/translations";
-import back from "../assets/images/travel_back.png";
+} from "../../assets/data/translations";
+import back from "../../assets/images/travel_back.png";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "./Travel.css";
 
@@ -100,4 +100,4 @@ const Travel = () => {
   );
 };
 
-export default Travel;
+export default memo(Travel);
