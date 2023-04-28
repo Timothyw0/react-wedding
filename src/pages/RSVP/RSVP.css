@@ -1,58 +1,75 @@
 .rsvp-div {
-    height: 100%;
-    padding-top: 80px;
-    padding-bottom: 120px;
+  height: 100%;
+  padding-top: 80px;
+  padding-bottom: 120px;
 }
 
 .rsvp-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    border-radius: 50px !important;
-  }
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  text-align: center;
+  border-radius: 50px !important;
+}
 
 .rsvp-text {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .rsvp-photo-div {
-    padding-top: 10px;
-    padding-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 50px;
 }
 
 .rsvp-photo-div img {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .rsvp-photo {
-    max-width: 30%;
-    max-height: 30%;
-    margin-top: 2vh;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 30%;
+  max-height: 30%;
+  margin-top: 2vh;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .rsvp-box {
-    margin-top: 10px !important;
-    border: 1px solid black;
+  margin-top: 10px !important;
+  border: 1px solid black;
 }
 
 .failure-form {
-    color: red;
+  color: red;
 }
 
 .rsvp-form {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 .review-item {
-    padding-bottom: 0;
-    padding-left: 5px;
-    padding-right: 5px;
-    text-align: left;
+  padding-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: left;
 }
 
 .review-title {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+.song-request-input {
+  margin: auto;
+  width: 80%;
+}
+
+.food-detail-button {
+  margin-top: 20px;
+}
+
+.food-description-text {
+  padding-bottom: 10px;
+}
+
+.food-description-title {
+  font-weight: bold;
 }

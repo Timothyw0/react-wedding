@@ -12,7 +12,7 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   englishTextPassword,
@@ -48,7 +48,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let theme = createTheme();
+let theme = createTheme({
+  typography: { fontFamily: "Playfair Display" },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `@font-face {font-family: 'Playfair Display';}`,
+    },
+  },
+});
 theme = responsiveFontSizes(theme);
 
 function App() {
@@ -159,7 +166,7 @@ function App() {
               <Route path="/party" element={<Party />} />
               <Route path="/events" element={<Events />} />
               <Route path="/accommodations" element={<Travel />} />
-              {/* <Route path="/rsvp" element={<RSVP />} /> */}
+              <Route path="/rsvp" element={<RSVP />} />
               <Route path="/registry" element={<Registry />} />
               <Route path="/questions" element={<Questions />} />
               <Route path="*" element={<NotFound />} />

@@ -10,6 +10,7 @@ import {
   FormGroup,
   Grid,
   InputLabel,
+  Modal,
   Paper,
   Select,
   MenuItem,
@@ -20,7 +21,10 @@ import {
 } from "@material-ui/core";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { englishTextRSVP, chineseTextRSVP } from "../../assets/data/translations";
+import {
+  englishTextRSVP,
+  chineseTextRSVP,
+} from "../../assets/data/translations";
 import { useSelector } from "react-redux";
 import { memo } from "react";
 import MuiAlert from "@mui/material/Alert";
@@ -34,14 +38,27 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "10px",
+};
+
 function RSVP() {
   const [numGuests, setNumGuests] = useState(0);
   const [rsvpState, setRSVPState] = useState([]);
-  const [rsvpInfo, setRSVPInfo] = useState(undefined);
   const [cannotAttend, setCannotAttend] = useState(false);
   const [cannotAttendEmail, setCannotAttendEmail] = useState("");
   const [cannotAttendFirstname, setCannotAttendFirstname] = useState("");
   const [cannotAttendLastname, setCannotAttendLastname] = useState("");
+  const [isFoodModalOpen, setIsFoodModalOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [success, setSuccess] = useState(false);
   const [fail, setFail] = useState(false);
@@ -100,6 +117,7 @@ function RSVP() {
       for (let i = 0; i < numGuests; i++) {
         copySteps.push(`${textLang.guestPrefix} ${i + 1}`);
       }
+      copySteps.push("Song Requests?");
       copySteps.push(textLang.review);
     }
     setSteps(copySteps);
@@ -112,6 +130,7 @@ function RSVP() {
           email: "",
           dietary: "",
           food: "",
+          songRequest: "",
         });
       }
     } else if (numGuests === 0) {
@@ -123,10 +142,7 @@ function RSVP() {
   }, [numGuests]);
 
   const handleClose = () => {
-    setSuccess(false);
-    setFail(false);
     setFailMessage("");
-    setThanks(false);
     setThanksMessage("");
   };
 
@@ -141,8 +157,11 @@ function RSVP() {
       return;
     }
     // Error check
-    if (cannotAttendEmail.length === 0 && cannotAttend) {
-      setFailMessage(textLang.missingEmail);
+    if (
+      (!cannotAttendEmail || !cannotAttendFirstname || !cannotAttendLastname) &&
+      cannotAttend
+    ) {
+      setFailMessage(textLang.checkFieldMessage);
       setFail(true);
       error = true;
       return;
@@ -201,6 +220,7 @@ function RSVP() {
           email: rsvpState[0].email,
           dietary: rsvpState[i].dietary || "",
           food: rsvpState[i].food,
+          songRequest: rsvpState[0].songRequest,
         });
         if (!add) {
           setFailMessage(textLang.error);
@@ -409,13 +429,32 @@ function RSVP() {
             </>
           );
         })}
+        <Grid item xs={12} style={{ paddingBottom: 10, marginTop: "5px" }}>
+          <h4>Song Requests: {rsvpState?.[0]?.songRequest}</h4>
+        </Grid>
       </Grid>
     </>
+  );
+
+  const songRequestForm = rsvpState && (
+    <div className="song-request-input">
+      <TextField
+        fullWidth
+        id="song-request-field"
+        variant="standard"
+        label="Requests"
+        className="rsvp-text"
+        type="text"
+        value={rsvpState?.[0]?.songRequest}
+        onChange={(event) => setInfo(event.target.value, "songRequest", 0)}
+      />
+    </div>
   );
 
   const stepMappings = (index) => {
     if (index === 0) return attendanceInfo;
     else if (index === steps.length - 1) return reviewForm;
+    else if (index === steps.length - 2) return songRequestForm;
     else return guestForm(index - 1);
   };
 
@@ -508,6 +547,14 @@ function RSVP() {
               )}
             </Box>
           </div>
+          <Button
+            className="food-detail-button"
+            type="button"
+            style={{ textTransform: "none" }}
+            onClick={() => setIsFoodModalOpen(true)}
+          >
+            Show Food Options
+          </Button>
         </CardContent>
       </Card>
       <Snackbar
@@ -521,7 +568,7 @@ function RSVP() {
         </Alert>
       </Snackbar>
       <Snackbar
-        open={fail}
+        open={failMessage}
         autoHideDuration={10000}
         onClose={handleClose}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -531,7 +578,7 @@ function RSVP() {
         </Alert>
       </Snackbar>
       <Snackbar
-        open={thanks && language !== "Zh"}
+        open={thanksMessage && language !== "Zh"}
         autoHideDuration={10000}
         onClose={handleClose}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -540,6 +587,22 @@ function RSVP() {
           {thanksMessage}
         </Alert>
       </Snackbar>
+      <Modal
+        open={isFoodModalOpen}
+        onClose={() => setIsFoodModalOpen(false)}
+        disableScrollLock
+      >
+        <Box sx={style}>
+          <div>
+            {textLang.foodTitles.map((title, idx) => (
+              <div className="food-description-text">
+                <span className="food-description-title">{title}</span>:{" "}
+                {textLang.foodDescriptions[idx]}
+              </div>
+            ))}
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 }
