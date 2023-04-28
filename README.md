@@ -17,6 +17,9 @@ Update hotel link for Saturday-Sunday stays only
 ## 1.3 11/27/2023
 Add lazy loading to increase performance
 
+## 1.4 4/28/2023
+Enable RSVP functionality, added song request form, added food description modal. Still pointing to DEV Firestore
+
 ## Welcome! 
 
 This is my personal project to create my own wedding website using ReactJS as a Single Page Application (SPA).
