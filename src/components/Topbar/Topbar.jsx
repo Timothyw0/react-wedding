@@ -10,8 +10,8 @@ import {
   Toolbar,
 } from "@material-ui/core";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useDispatch, useSelector } from "react-redux";
-import { englishTextNav, chineseTextNav } from "../../assets/data/translations";
+import { useDispatch } from "react-redux";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 import { NavLink } from "react-router-dom";
 import actions from "../../actions/languageAction";
 import "./Topbar.css";
@@ -20,11 +20,7 @@ function Topbar() {
   const dispatch = useDispatch();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorLang, setAnchorLang] = useState(null);
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishTextNav;
-  else if (language === "Zh") textLang = chineseTextNav;
+  const { textLang } = useLanguageSelector("nav");
 
   const openLang = Boolean(anchorLang);
 

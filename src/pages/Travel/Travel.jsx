@@ -1,13 +1,10 @@
 import React, { memo, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import {
-  englishTextTravel,
-  chineseTextTravel,
-} from "../../assets/data/translations";
+import { useSelector } from "react-redux";
 import back from "../../assets/images/travel_back.png";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "./Travel.css";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 
 const center = {
   lat: 40.26843488238582,
@@ -22,6 +19,8 @@ const Travel = () => {
     width: "50%",
     margin: "auto",
   });
+  const language = useSelector((state) => state.language.language);
+  const { textLang } = useLanguageSelector("travel");
 
   const checkWidth = () => {
     if (window.innerWidth <= 800) {
@@ -36,11 +35,6 @@ const Travel = () => {
   }, []);
 
   window.addEventListener("resize", checkWidth);
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishTextTravel;
-  else if (language === "Zh") textLang = chineseTextTravel;
 
   return (
     <div

@@ -7,11 +7,6 @@ import {
   CardContent,
 } from "@material-ui/core";
 import React, { memo, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import {
-  englishTextEvents,
-  chineseTextEvents,
-} from "../../assets/data/translations";
 import divider from "../../assets/images/divider.png";
 import SportsBarIcon from "@mui/icons-material/SportsBar";
 import FilterVintageIcon from "@mui/icons-material/FilterVintage";
@@ -19,14 +14,11 @@ import CelebrationIcon from "@mui/icons-material/Celebration";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import back from "../../assets/images/qa_back.jpeg";
 import "./Events.css";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 
 function Events() {
   const [width, setWidth] = useState(window.innerWidth);
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishTextEvents;
-  else if (language === "Zh") textLang = chineseTextEvents;
+  const { textLang } = useLanguageSelector("events");
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);

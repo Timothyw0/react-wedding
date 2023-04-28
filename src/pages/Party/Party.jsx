@@ -1,11 +1,6 @@
 import { Grid, Typography } from "@material-ui/core";
 import { Box, Card, CardContent } from "@material-ui/core";
-import { useSelector } from "react-redux";
 import React, { memo, useState, useEffect } from "react";
-import {
-  englishTextParty,
-  chineseTextParty,
-} from "../../assets/data/translations";
 import back from "../../assets/images/qa_back.jpeg";
 import divider from "../../assets/images/divider.png";
 import spencer from "../../assets/images/party/spencer.jpg";
@@ -24,14 +19,11 @@ import steff from "../../assets/images/party/steff.jpg";
 import theresa from "../../assets/images/party/theresa.jpeg";
 import tom from "../../assets/images/party/tom.jpeg";
 import "./Party.css";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 
 function Party() {
   const [width, setWidth] = useState(window.innerWidth);
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishTextParty;
-  else if (language === "Zh") textLang = chineseTextParty;
+  const { textLang } = useLanguageSelector("party");
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);

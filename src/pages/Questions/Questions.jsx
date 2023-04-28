@@ -1,18 +1,15 @@
-import React, { memo, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { memo, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  englishTextQA,
-  chineseTextQA,
-  englishTextTravel,
-} from "../../assets/data/translations";
+import { englishTextTravel } from "../../assets/data/translations";
 import { Box, Card } from "@material-ui/core";
 import back from "../../assets/images/qa_back.jpeg";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import "./Questions.css";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 
 const Questions = () => {
   const [width, setWidth] = useState(window.innerWidth);
+  const { textLang } = useLanguageSelector("qa");
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
@@ -26,11 +23,6 @@ const Questions = () => {
   }, []);
 
   const isMobile = width <= 768;
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishTextQA;
-  else if (language === "Zh") textLang = chineseTextQA;
 
   let pageContent = textLang.questions.map((elem, idx) => {
     let answerText;

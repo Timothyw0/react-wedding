@@ -169,6 +169,18 @@ function App() {
               <Route path="/rsvp" element={<RSVP />} />
               <Route path="/registry" element={<Registry />} />
               <Route path="/questions" element={<Questions />} />
+              <Route
+                path="/thingstodo"
+                exact
+                element={
+                  <div className="home-page">
+                    The 2023 USA Ultimate Club Frisbee Regionals:{" "}
+                    <a href="https://usaultimate.org/club/schedule/">
+                      Information
+                    </a>
+                  </div>
+                }
+              />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Speeddial />

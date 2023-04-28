@@ -1,20 +1,15 @@
 import React, { memo, useEffect, useState } from "react";
 import { Box, Card, CardContent, Grid, Typography } from "@material-ui/core";
-import { englishTextHome, chineseTextHome } from "../../assets/data/translations";
-import { useSelector } from "react-redux";
 import homePhoto from "../../assets/images/home_back.jpg";
 import divider from "../../assets/images/divider.png";
 import back from "../../assets/images/qa_back.jpeg";
 import cardBack from "../../assets/images/card_back.jpeg";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 
 const Home = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [daysTill, setDaysTill] = useState(undefined);
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishTextHome;
-  else if (language === "Zh") textLang = chineseTextHome;
+  const { textLang } = useLanguageSelector("home");
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);

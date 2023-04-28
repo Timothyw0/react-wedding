@@ -1,6 +1,5 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
-import { englishTextDial, chineseTextDial } from "../../assets/data/translations";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
@@ -9,11 +8,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import SmsIcon from "@mui/icons-material/Sms";
 
 const Speeddial = () => {
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishTextDial;
-  else if (language === "Zh") textLang = chineseTextDial;
+  const { textLang } = useLanguageSelector("dial");
 
   const actions = [
     { icon: <EmailIcon />, name: textLang.email },

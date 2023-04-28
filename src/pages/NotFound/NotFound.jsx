@@ -1,14 +1,9 @@
-import React, { memo, useState } from "react";
-import { useSelector } from "react-redux";
-import { englishText404, chineseText404 } from "../../assets/data/translations";
+import React, { memo } from "react";
 import back from "../../assets/images/404_back.jpeg";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 
 const NotFound = () => {
-  const language = useSelector((state) => state.language.language);
-
-  let textLang;
-  if (language === "En") textLang = englishText404;
-  else if (language === "Zh") textLang = chineseText404;
+  const { textLang } = useLanguageSelector("404");
 
   return (
     <div

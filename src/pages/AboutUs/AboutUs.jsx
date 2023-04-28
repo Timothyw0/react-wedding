@@ -1,11 +1,7 @@
-import { Grid, Typography, Card, CardContent } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { Grid, Typography } from "@material-ui/core";
 import React, { memo, useState, useEffect } from "react";
 import { Gallery } from "react-grid-gallery";
-import {
-  englishTextStory,
-  chineseTextStory,
-} from "../../assets/data/translations";
+import { useLanguageSelector } from "../../hooks/useLanguageSelector";
 import divider from "../../assets/images/divider.png";
 import us1 from "../../assets/images/us.jpg";
 import backPhoto from "../../assets/images/travel_back.png";
@@ -48,7 +44,7 @@ import "./AboutUs.css";
 
 function AboutUs() {
   const [width, setWidth] = useState(window.innerWidth);
-  const language = useSelector((state) => state.language.language);
+  const { textLang } = useLanguageSelector("story");
 
   const orientation = {
     wide: { height: 3, width: 4 },
@@ -112,10 +108,6 @@ function AboutUs() {
         : orientation.tall.width,
     };
   });
-
-  let textLang;
-  if (language === "En") textLang = englishTextStory;
-  else if (language === "Zh") textLang = chineseTextStory;
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
