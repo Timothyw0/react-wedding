@@ -245,7 +245,7 @@ const englishTextRSVP = {
     "Black plum & sweet chili glaze, sesame seed crust, wonton ribbons",
     "Campanelle, seasonal vegetables, tomato-basil cream, parmesan",
   ],
-  showFoodButton: "Show Food Options",
+  showFoodButton: "Food Details",
   songRequests: "Any Song Requests?",
   songRequestLabel: "Requests",
   error: "Something went wrong! Please tell Tim!",

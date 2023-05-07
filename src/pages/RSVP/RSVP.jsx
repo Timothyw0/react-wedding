@@ -142,7 +142,7 @@ function RSVP() {
   const submitRSVP = async (event) => {
     if (event) event.preventDefault();
     let error = false;
-    const rsvpCol = collection(db, "wedding-dev");
+    const rsvpCol = collection(db, "wedding-prod");
     const rsvps = await getDocs(rsvpCol);
     if (!rsvps.docs) {
       setFailMessage(textLang.error);
