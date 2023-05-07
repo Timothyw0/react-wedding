@@ -360,10 +360,9 @@ function RSVP() {
             label={textLang.food}
             onChange={(event) => setInfo(event.target.value, "food", index)}
           >
-            <MenuItem value={"steak"}>{textLang.foodChoices[0]}</MenuItem>
-            <MenuItem value={"chicken"}>{textLang.foodChoices[1]}</MenuItem>
-            <MenuItem value={"salmon"}>{textLang.foodChoices[2]}</MenuItem>
-            <MenuItem value={"pasta"}>{textLang.foodChoices[3]}</MenuItem>
+            {textLang.foodTitles.map((food, index) => (
+              <MenuItem value={textLang.foodChoices[index]}>{food}</MenuItem>
+            ))}
           </Select>
         </FormControl>
         <br />
