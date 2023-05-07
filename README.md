@@ -20,6 +20,9 @@ Add lazy loading to increase performance
 ## 1.4 4/28/2023
 Enable RSVP functionality, added song request form, added food description modal. Still pointing to DEV Firestore
 
+## 1.5 5/6/2023
+Repointe database to PROD Firestore 😃
+
 ## Welcome! 
 
 This is my personal project to create my own wedding website using ReactJS as a Single Page Application (SPA).
