@@ -21,7 +21,10 @@ Add lazy loading to increase performance
 Enable RSVP functionality, added song request form, added food description modal. Still pointing to DEV Firestore
 
 ## 1.5 5/6/2023
-Repointe database to PROD Firestore 😃
+Repoint database to PROD Firestore 😃
+
+## 1.6 5/8/2023
+Added kids menu to the food choices
 
 ## Welcome! 
 
