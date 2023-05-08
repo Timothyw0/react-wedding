@@ -239,7 +239,7 @@ const englishTextRSVP = {
     "Chicken Warrington",
     "Sesame Salmon",
     "Almshouse Pasta",
-    "Kids Menu",
+    "Kids Menu (12 and under)",
   ],
   foodDescriptions: [
     "Brazilian steak sauce, chimichurri & char-grilled onions",
@@ -290,7 +290,7 @@ const chineseTextRSVP = {
     "沃灵顿鸡",
     "香芝三文鱼",
     "意大利面",
-    "儿童菜单",
+    "儿童菜单 (12 岁以下)",
   ],
   foodDescriptions: [
     "巴西烤肉酱，阿根廷（Chimichurri)风味酱汁&烤洋葱",
