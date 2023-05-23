@@ -25,7 +25,6 @@ import { useSelector } from "react-redux";
 import { memo } from "react";
 import MuiAlert from "@mui/material/Alert";
 import React, { useEffect, useState } from "react";
-import rsvpPhoto from "../../assets/images/RSVP.jpg";
 import db from "../../firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore/lite";
 import "./RSVP.css";
@@ -453,6 +452,9 @@ function RSVP() {
     else return guestForm(index - 1);
   };
 
+  const rsvpPhoto =
+    "https://lh3.googleusercontent.com/G5KTtnTEytf4WiMxvsWsix9vIVyO-V7vkEB9fnq7LpBLQqRQE0TgsgR0m2rqqnfkjYwZF6Pmd9mI6NA0vFMOztntGOzKqQJeRmNFAnGZKZap05nlZz9BcgPjQGP7to4He4BbV3I8sQ=w2400";
+
   return (
     <div className="rsvp-div">
       <Card
@@ -463,7 +465,12 @@ function RSVP() {
           borderRadius: "5px",
         }}
       >
-        <CardMedia component="img" height="100%" image={rsvpPhoto} />
+        <CardMedia
+          component="img"
+          height="100%"
+          referrerPolicy="no-referrer"
+          src={rsvpPhoto}
+        />
         <CardContent>
           <div>
             <Typography
